@@ -1,0 +1,11 @@
+# Dependency directories
+node_modules/
+
+# Logs
+npm-debug.log
+
+# Pycharm settings
+.idea
+
+# Vscode settings
+.vscode
