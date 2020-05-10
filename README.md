@@ -27,3 +27,12 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+
+## Backend
+
+Run application ``` DEBUG=myapp:* npm start ```
+
+
+## Frontend
+
+Run application ``` ng serve --open ```
