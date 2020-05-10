@@ -27,10 +27,3 @@
 // }));
 
 
-// TODO read after initail node js introduction
-// https://habr.com/ru/post/424199/
-// https://github.com/graphql/express-graphql
-
-
-// tools for angular 
-// https://www.howtographql.com/angular-apollo/1-getting-started/
