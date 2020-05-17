@@ -8,6 +8,7 @@ import swaggerUi from 'swagger-ui-express';
 
 import config from './config';
 import routes from './routes';
+import apollo from './graphql';
 import swaggerOptions from './config/swagger';
 
 const app = express();
@@ -45,6 +46,9 @@ if (process.env.NODE_ENV === 'development') {
 
 // api routes to /api
 app.use('/api', routes);
+
+// Append apollo to our API
+apollo(app);
 
 app.server.listen(config.port);
 

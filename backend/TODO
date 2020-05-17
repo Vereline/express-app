@@ -50,3 +50,9 @@ https://www.npmjs.com/package/swagger-ui-express
 // express with es6 
 https://medium.com/javascript-in-plain-english/using-es6-for-your-backend-nodejs-application-running-on-express-using-babel-5503bded9842
 https://www.freecodecamp.org/news/how-to-enable-es6-and-beyond-syntax-with-node-and-express-68d3e11fe1ab/
+
+// boilerplate
+https://github.com/imJPFeliciano/node-express-es6-airbnb
+
+// graphql 
+https://medium.com/@xoor/coding-a-graphql-api-with-node-js-c02d617f49f4
