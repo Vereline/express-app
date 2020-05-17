@@ -1,31 +1,24 @@
 {
-  "env": {
-    "commonjs": true,
-    "es6": true,
-    "node": true
-  },
-  "extends": [
-    "plugin:node/recommended",
-    "plugin:security/recommended"
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": [
+      "jsx-a11y",
+      "import"
   ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parserOptions": {
-    "ecmaVersion": 2020
-  },
   "rules": {
-    "semi": ["error", "always"],
-    "quotes": ["error", "double"],
-    "node/exports-style": ["error", "module.exports"],
-    "node/file-extension-in-import": ["error", "always"],
-    "node/prefer-global/buffer": ["error", "always"],
-    "node/prefer-global/console": ["error", "always"],
-    "node/prefer-global/process": ["error", "always"],
-    "node/prefer-global/url-search-params": ["error", "always"],
-    "node/prefer-global/url": ["error", "always"],
-    "node/prefer-promises/dns": "error",
-    "node/prefer-promises/fs": "error"
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-quotes": ["error", "prefer-single"],
+    "eol-last": ["error", "always"]
+  },
+  "env": {
+      "browser": true,
+      "node": true,
+      "es6": true,
+      "commonjs": true
+  },
+  "globals": {
+    "document": false
   }
 }
