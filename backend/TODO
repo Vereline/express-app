@@ -1,14 +1,3 @@
-// TODO read after initail node js introduction
-// https://habr.com/ru/post/424199/
-// https://github.com/graphql/express-graphql
-
-
-// ORM for the backend
-// https://sequelize.org/master/manual/getting-started 
-
-+ try to read some Metanit lectures at the beginning
-
-
 Технологический стек: MEAN (Mongo, Express, Angular, Nodejs)
 Для API: GraphQL, можно добавить дополнительное мини-API restFULL
 Дополнения по тех. стеку: MaterialUI, SASS, Web Sockets, локализация
@@ -43,3 +32,21 @@
 2. Авторизация через социальные сети
 3. Загрузка файлов и сохранение на сервере
 4. Интерфейс должен быть доступен и с десктопа, и с мобильного устройства
+
+// TODO read after initail node js introduction
+// https://habr.com/ru/post/424199/
+// https://github.com/graphql/express-graphql
+
+
+// ORM for the backend
+// https://sequelize.org/master/manual/getting-started 
+
++ try to read some Metanit lectures at the beginning
+
+
+// swagger for the backend 
+https://www.npmjs.com/package/swagger-ui-express
+
+// express with es6 
+https://medium.com/javascript-in-plain-english/using-es6-for-your-backend-nodejs-application-running-on-express-using-babel-5503bded9842
+https://www.freecodecamp.org/news/how-to-enable-es6-and-beyond-syntax-with-node-and-express-68d3e11fe1ab/

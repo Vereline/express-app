@@ -30,7 +30,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ## Backend
 
-Run application ``` DEBUG=myapp:* npm start ```
+Run application ``` DEBUG=backend:* npm start ```
 
 
 ## Frontend
