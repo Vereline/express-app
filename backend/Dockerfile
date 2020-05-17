@@ -30,12 +30,17 @@ RUN apt-get update
 
 # Install MongoDB package (.deb)
 # RUN apt-get install -y mongodb-org git nodejs npm
-RUN apt-get install -y mongodb-org
+RUN apt-get install -y mongodb-org systemd
 
 # RUN nodejs --version
 # RUN npm --version
 # RUN git --version
-# RUN mongodb --version
+# RUN mongo --version
+
+# Remove mongo
+# RUN apt-get purge mongodb-org*
+# RUN rm -r /var/log/mongodb 
+# RUN rm -r /var/lib/mongodb
 
 # Create the default data directory
 RUN mkdir -p /data/db
