@@ -8,6 +8,7 @@ import swaggerUi from 'swagger-ui-express';
 
 import config from './config';
 import routes from './routes';
+import { adminRouter, adminBro } from './routes/adminBro';
 import apollo from './graphql';
 import swaggerOptions from './config/swagger';
 
@@ -16,6 +17,9 @@ app.server = http.createServer(app);
 
 // middleware
 app.use(cors());
+
+// admin route
+app.use(adminBro.options.rootPath, adminRouter);
 
 // swagger Documentation
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
