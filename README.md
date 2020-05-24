@@ -30,9 +30,9 @@ This README would normally document whatever steps are necessary to get your app
 
 ## Backend
 
-Run application ``` DEBUG=backend:* npm start ```
+[Link](backend/README.md)
 
 
 ## Frontend
 
-Run application ``` ng serve --open ```
+[Link](frontend/README.md)
