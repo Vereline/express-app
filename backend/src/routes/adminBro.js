@@ -1,7 +1,7 @@
 import express from 'express';
 
-const AdminBro = require('admin-bro')
-const AdminBroExpressjs = require('admin-bro-expressjs')
+const AdminBro = require('admin-bro');
+const AdminBroExpressjs = require('admin-bro-expressjs');
 
 const adminBro = new AdminBro({
   databases: [],
