@@ -12,17 +12,38 @@
  *     properties:
  *       hello:
  *         type: string
- *         description: Hello world message
+ *         description: Perform login
  *   signup:
  *     type: object
  *     properties:
  *       hello:
  *         type: string
- *         description: Hello world message
+ *         description: Perform signup
  *   posts:
  *     type: object
  *     properties:
  *       hello:
  *         type: string
- *         description: Hello world message
+ *         description: Get list of posts
+ *   post:
+ *     type: object
+ *     properties:
+ *       hello:
+ *         type: string
+ *         description: Get post detail
+ *   postCreate:
+ *     type: object
+ *     properties:
+ *       title:
+ *         type: string
+ *         description: Get post detail
+ *       postText:
+ *         type: string
+ *       authorId:
+ *         type: integer
  */
+
+
+// Describing body of the request
+// https://swagger.io/docs/specification/describing-request-body/
+// https://swagger.io/docs/specification/2-0/describing-parameters/
