@@ -42,8 +42,3 @@
  *       authorId:
  *         type: integer
  */
-
-
-// Describing body of the request
-// https://swagger.io/docs/specification/describing-request-body/
-// https://swagger.io/docs/specification/2-0/describing-parameters/

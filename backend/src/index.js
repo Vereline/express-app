@@ -51,6 +51,25 @@ if (process.env.NODE_ENV === 'development') {
 // api routes to /api
 app.use('/api', routes);
 
+// Middleware, that handles 404 error if endpoint or id was not found
+app.use((req, res, next) => {
+  const error = new Error('Not found');
+  error.status = 404;
+  next(error);
+});
+
+// Middleware, that handles 500 error in case an internall error occured
+app.use((error, req, res, next) => {
+  const errorCode = error.status || 500;
+  res.status(errorCode);
+  res.json({
+    error: {
+      message: error.message,
+      code: errorCode,
+    },
+  });
+});
+
 // Append apollo to our API
 apollo(app);
 
