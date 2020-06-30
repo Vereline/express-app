@@ -7,6 +7,15 @@
  *       hello:
  *         type: string
  *         description: Hello world message
+ *   notFound:
+ *     type: object
+ *     properties:
+ *       message:
+ *         type: string
+ *         description: Not Found Error
+ *       code:
+ *         type: integer
+ *         description: Not Found Code
  *   login:
  *     type: object
  *     properties:

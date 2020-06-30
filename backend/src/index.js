@@ -39,6 +39,7 @@ app.use('/docs', swaggerUi.serve, (req, res, next) => {
   }
 });
 
+// use bodyParser to parse all json object passed to the app
 app.use(bodyParser.json({
   limit: config.bodyLimit,
 }));

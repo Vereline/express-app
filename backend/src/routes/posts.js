@@ -50,7 +50,7 @@ api.get('/', posts.postsList);
  *       404:
  *         description: Error
  *         schema:
- *           $ref: '#/definitions/post'
+ *           $ref: '#/definitions/notFound'
  *     parameters:
  *      - name: id
  *        in: path
@@ -112,7 +112,7 @@ api.post('/', posts.postsCreate);
  *       404:
  *         description: Error
  *         schema:
- *           $ref: '#/definitions/post'
+ *           $ref: '#/definitions/notFound'
  *     parameters:
  *      - name: id
  *        in: path
@@ -134,5 +134,36 @@ api.post('/', posts.postsCreate);
  */
 api.patch('/:id', posts.postsUpdate);
 
+/**
+ * @swagger
+ * /api/posts/{id}:
+ *   delete:
+ *     tags: ["Posts"]
+ *     description: Deletes post by id
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: Success
+ *         schema:
+ *           $ref: '#/definitions/post'
+ *       404:
+ *         description: Error
+ *         schema:
+ *           $ref: '#/definitions/notFound'
+ *     parameters:
+ *      - name: id
+ *        in: path
+ *        description: ID of post to delete
+ *        required: true
+ *        schema:
+ *          type : integer
+ *          format: int64
+ *          minimum: 1
+ *     security:
+ *      - JWT: [read, write, admin]
+ *      - bearerAuth: [read, write, admin]
+ */
+api.delete('/:id', posts.postsDelete);
 
 export default api;

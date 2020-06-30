@@ -33,13 +33,16 @@
 3. Загрузка файлов и сохранение на сервере
 4. Интерфейс должен быть доступен и с десктопа, и с мобильного устройства
 
+// Node js
+https://nodejs.org/en/ 
+
 // TODO read after initail node js introduction
-// https://habr.com/ru/post/424199/
-// https://github.com/graphql/express-graphql
+https://habr.com/ru/post/424199/
+https://github.com/graphql/express-graphql
 
 
 // ORM for the backend
-// https://sequelize.org/master/manual/getting-started 
+https://sequelize.org/master/manual/getting-started 
 
 + try to read some Metanit lectures at the beginning
 
@@ -54,11 +57,15 @@ https://www.freecodecamp.org/news/how-to-enable-es6-and-beyond-syntax-with-node-
 // boilerplate
 https://github.com/imJPFeliciano/node-express-es6-airbnb
 
+// Airbnb's Javascript (ES6) Style Guide
+https://github.com/airbnb/javascript
+
 // graphql 
 https://medium.com/@xoor/coding-a-graphql-api-with-node-js-c02d617f49f4
 
 // Mongo in container
 https://devops.ionos.com/tutorials/creating-a-mongodb-docker-container-with-an-attached-storage-volume/
+https://medium.com/faun/managing-mongodb-on-docker-with-docker-compose-26bf8a0bbae3
 
 // Mongo
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/ 
@@ -74,8 +81,8 @@ https://github.com/mrvautin/adminMongo
 // TODO: write a normal readme and documentation, cleanup code before started
 
 // Describing body of the request (Open api doxumentation)
-// https://swagger.io/docs/specification/describing-request-body/
-// https://swagger.io/docs/specification/2-0/describing-parameters/
+https://swagger.io/docs/specification/describing-request-body/
+https://swagger.io/docs/specification/2-0/describing-parameters/
 
-Node js youtube
-// https://www.youtube.com/watch?v=UVAMha41dwo&list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q&index=4
+// Node js youtube
+https://www.youtube.com/watch?v=UVAMha41dwo&list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q&index=4

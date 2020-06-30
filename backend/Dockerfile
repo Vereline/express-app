@@ -12,6 +12,8 @@ LABEL maintainer="Viktoryia Stanko <vikroryia.stanko@gmail.com>"
 ENV TZ=Europe/Minsk
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+RUN echo "Please, use docker-compose instead this file, this was just a training stuff"
+
 # Update the repository sources list and install gnupg2
 RUN apt-get update && apt-get install -y gnupg2
 
@@ -32,6 +34,7 @@ RUN apt-get update
 # RUN apt-get install -y mongodb-org git nodejs npm
 RUN apt-get install -y mongodb-org systemd
 
+# Check main packages versions in order to be sure that they were installed successfully
 # RUN nodejs --version
 # RUN npm --version
 # RUN git --version

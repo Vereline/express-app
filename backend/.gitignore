@@ -5,3 +5,5 @@ src/config/dev.js
 src/config/prod.js
 
 .adminbro
+
+mongo-volume/

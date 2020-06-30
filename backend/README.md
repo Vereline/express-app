@@ -1,6 +1,4 @@
-# node-express-es6-airbnb
-
-`node-express-es6-airbnb` is a project that provides you with a boilerplate tool to create a [node.js](https://nodejs.org/en/) API with an ES6 transpiler while following the [Airbnb's Javascript (ES6) Style Guide](https://github.com/airbnb/javascript).
+# express-app API
 
 ## Features
 
@@ -22,7 +20,7 @@
 * [Express.js](http://expressjs.com/)
 * [Swagger](https://swagger.io/)
 
-## Getting start
+## Getting started
 
 Just run the following commands in your terminal to start coding
 
@@ -34,6 +32,18 @@ npm install
 
 You'll need to create the `/src/config/dev.js` file following the values specified in `/src/config/dev.js`.
 
+In case you don't have a `/src/config/dev.js` file, simply create it and paste the code below(default dev settings of the project).
+
+```js
+export default {
+  port: 3005,
+  bodyLimit: '100kb',
+  // API_URL: 'http://localhost',
+  API_URL: 'localhost',
+  API_PORT: 3005,
+};
+```
+
 Then run:
 
 ```bash
@@ -42,10 +52,28 @@ npm run dev
 
 The last command automatically runs the API exposed on <http://localhost:3005.>
 
-Setup container with database by running command
+!DEPRECATED! Setup container with database by running command
 
 ```bash
 ./start-db.sh
+```
+
+Setup container with database by running command for the first time:
+
+```bash
+docker-compose up --build -d mongodb
+```
+
+then do:
+
+```bash
+docker-compose up
+```
+
+or run in the background
+
+```bash
+docker-compose up -d
 ```
 
 Setup MongoDB admin
@@ -56,7 +84,7 @@ Setup MongoDB admin
 2. Install dependencies: `npm install`
 3. Start application: `npm start` or `node app`
 4. Visit [http://127.0.0.1:1234](http://127.0.0.1:1234) in your browser
-
+5. Add a connection `mongodb://TestUser:TestPass@127.0.0.1:27017/express-app-db`
 ## Deployment
 
 To create a build for production you need to build your current project with the following command:
