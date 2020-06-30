@@ -84,7 +84,8 @@ Setup MongoDB admin
 2. Install dependencies: `npm install`
 3. Start application: `npm start` or `node app`
 4. Visit [http://127.0.0.1:1234](http://127.0.0.1:1234) in your browser
-5. Add a connection `mongodb://TestUser:TestPass@127.0.0.1:27017/express-app-db`
+5. Add a connection `mongodb://root-user:root-password@127.0.0.1:27017/express-app-db`
+
 ## Deployment
 
 To create a build for production you need to build your current project with the following command:

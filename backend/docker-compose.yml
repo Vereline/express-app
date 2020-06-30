@@ -3,14 +3,19 @@ version: '3.7'
 services: 
     mongodb:
         image: mongo:latest
-        container_name: mongodb_express_app
-        restart: always
-        environment: 
-            - MONGO_INITDB_DATABASE=express-app-db
-            - MONGO_INITDB_ROOT_USERNAME=root-user
-            - MONGO_INITDB_ROOT_PASSWORD=root-password
-        volumes: 
-            - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-            - ./mongo-volume:/data/db
-        ports: 
-            - '27017-27019:27017-27019'
+        container_name: mongodb
+        hostname: mongodb
+        volumes:
+            - ./.docker/mongodb/mongod.conf:/etc/mongod.conf
+            - ./.docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
+            - ./.docker/mongodb/data/db/:/data/db/
+            - ./.docker/mongodb/data/log/:/var/log/mongodb/
+        env_file:
+            - .env
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+            MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+        ports:
+            - "27017:27017"
+        command: ["-f", "/etc/mongod.conf"]
