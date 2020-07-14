@@ -58,7 +58,7 @@ The last command automatically runs the API exposed on <http://localhost:3005.>
 ./start-db.sh
 ```
 
-Setup container with database by running command for the first time:
+!DEPRECATED! Setup container with database by running command for the first time:
 
 ```bash
 docker-compose up --build -d mongodb
@@ -84,7 +84,8 @@ Setup MongoDB admin
 2. Install dependencies: `npm install`
 3. Start application: `npm start` or `node app`
 4. Visit [http://127.0.0.1:1234](http://127.0.0.1:1234) in your browser
-5. Add a connection `mongodb://root-user:root-password@127.0.0.1:27017/express-app-db`
+5. Add a connection `mongodb://root_user:root_pass@127.0.0.1:27017`
+6. Create database `ExpressApp`
 
 ## Deployment
 

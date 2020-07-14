@@ -1,15 +1,11 @@
 version: '3.7'
 
 services: 
-    mongodb:
+    mongodb_container:
         image: mongo:latest
-        container_name: mongodb
-        hostname: mongodb
+        container_name: mongodb_container
         volumes:
-            - ./.docker/mongodb/mongod.conf:/etc/mongod.conf
-            - ./.docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
-            - ./.docker/mongodb/data/db/:/data/db/
-            - ./.docker/mongodb/data/log/:/var/log/mongodb/
+            - dbdata:/data/db
         env_file:
             - .env
         environment:
@@ -18,4 +14,6 @@ services:
             MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
         ports:
             - "27017:27017"
-        command: ["-f", "/etc/mongod.conf"]
+
+volumes:
+    dbdata:
