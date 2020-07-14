@@ -5,6 +5,8 @@ import cors from 'cors';
 import morganBody from 'morgan-body';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import mongoose from 'mongoose';
+
 
 import config from './config';
 import routes from './routes';
@@ -14,6 +16,15 @@ import swaggerOptions from './config/swagger';
 
 const app = express();
 app.server = http.createServer(app);
+
+// Connect app to the database
+mongoose.connect(
+  config.DB_URL,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+);
 
 // middleware
 app.use(cors());

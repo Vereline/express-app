@@ -41,6 +41,7 @@ export default {
   // API_URL: 'http://localhost',
   API_URL: 'localhost',
   API_PORT: 3005,
+  DB_URL: 'mongodb://root_user:root_pass@127.0.0.1:27017',
 };
 ```
 
