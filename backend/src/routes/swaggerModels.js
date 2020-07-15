@@ -50,4 +50,25 @@
  *         type: string
  *       authorId:
  *         type: integer
+ *   comments:
+ *     type: object
+ *     properties:
+ *       hello:
+ *         type: string
+ *         description: Get list of comments
+ *   comment:
+ *     type: object
+ *     properties:
+ *       hello:
+ *         type: string
+ *         description: Get comment detail
+ *   commentCreate:
+ *     type: object
+ *     properties:
+ *       text:
+ *         type: string
+ *       post:
+ *         type: integer
+ *       author:
+ *         type: integer
  */

@@ -1,10 +1,17 @@
 import express from 'express';
 
-const AdminBro = require('admin-bro');
-const AdminBroExpressjs = require('admin-bro-expressjs');
+import AdminBro from 'admin-bro';
+import AdminBroExpressjs from 'admin-bro-expressjs';
+
+import Post from '../models/post';
+import Comment from '../models/comment';
+import User from '../models/user';
+
+// We have to tell AdminBro that we will manage mongoose resources with it
+AdminBro.registerAdapter(require('admin-bro-mongoose'));
 
 const adminBro = new AdminBro({
-  databases: [],
+  resources: [Post, Comment, User],
   rootPath: '/admin',
 });
 
