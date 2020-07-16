@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
   lastName: { type: mongoose.Schema.Types.String, required: true },
   photo: { type: mongoose.Schema.Types.String, required: false },
   birthDate: { type: mongoose.Schema.Types.Date, required: true },
-  isAdmin: { type: mongoose.Schema.Types.Boolean, required: true, default: false},
+  isAdmin: { type: mongoose.Schema.Types.Boolean, required: true, default: false },
   createdAt: { type: mongoose.Schema.Types.Date, required: true, default: new Date(Date.now()) },
   updatedAt: { type: mongoose.Schema.Types.Date, required: true, default: new Date(Date.now()) },
   //   deletedAt: mongoose.Schema.Types.Date, // right now deletion will be real removing item from the database

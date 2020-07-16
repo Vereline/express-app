@@ -63,6 +63,7 @@ export default {
     });
     // post.save().exec();
     post.save()
+      .exec()
       .then((result) => {
         console.log(result);
         res.status(201).json({

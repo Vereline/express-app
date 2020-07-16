@@ -48,7 +48,7 @@
  *         description: Get post detail
  *       postText:
  *         type: string
- *       authorId:
+ *       author:
  *         type: integer
  *   comments:
  *     type: object

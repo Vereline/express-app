@@ -59,6 +59,7 @@ export default {
       post: req.body.post,
     });
     comment.save()
+      .exec()
       .then((result) => {
         console.log(result);
         res.status(201).json({

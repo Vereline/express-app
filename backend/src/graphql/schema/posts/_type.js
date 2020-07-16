@@ -7,8 +7,8 @@ const Post = gql`
    postText: String!
    image: String!
    author: String!
-   createdAt: Date!
-   updatedAt: Date!
+   createdAt: String!
+   updatedAt: String!
  }`;
 
 export const types = () => [Post];
