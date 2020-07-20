@@ -6,7 +6,7 @@ import morganBody from 'morgan-body';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import mongoose from 'mongoose';
-
+import fs from 'fs';
 
 import config from './config';
 import routes from './routes';
@@ -31,6 +31,16 @@ app.use(cors());
 
 // admin route
 app.use(adminBro.options.rootPath, adminRouter);
+
+// File upload endpoint
+app.use('/uploads', express.static('uploads'));
+
+// Check if folder does not exist and crete new one
+const uploadsFolder = './uploads';
+
+if (!fs.existsSync(uploadsFolder)) {
+  fs.mkdirSync(uploadsFolder);
+}
 
 // swagger Documentation
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
@@ -63,7 +73,11 @@ if (process.env.NODE_ENV === 'development') {
 // api routes to /api
 app.use('/api', routes);
 
+// Append apollo to our API
+apollo(app);
+
 // Middleware, that handles 404 error if endpoint or id was not found
+// All these handlers should be at the bottom of the file(otherwise all other middleware won't be available)
 app.use((req, res, next) => {
   const error = new Error('Not found');
   error.status = 404;
@@ -81,9 +95,6 @@ app.use((error, req, res, next) => {
     },
   });
 });
-
-// Append apollo to our API
-apollo(app);
 
 app.server.listen(config.port);
 

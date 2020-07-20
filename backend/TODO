@@ -96,3 +96,11 @@ https://www.digitalocean.com/community/tutorials/containerizing-a-node-js-applic
 
 // Use this to customize the Admin Bro Panel
 https://adminbro.com/tutorial-actions.html
+
+//Apollo
+https://www.apollographql.com/docs/apollo-server/v1/servers/express/
+https://www.robinwieruch.de/graphql-apollo-server-tutorial
+https://www.apollographql.com/docs/link/links/http/
+
+// file upload
+https://code.tutsplus.com/tutorials/file-upload-with-multer-in-node--cms-32088

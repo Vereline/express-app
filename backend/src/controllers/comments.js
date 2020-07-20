@@ -1,10 +1,12 @@
 import mongoose from 'mongoose';
 import Comment from '../models/comment';
+import Post from '../models/post';
 
 export default {
   commentsList(req, res, next) {
     Comment.find()
       .select('-__v') // everything except __v
+    // .populate('author')
       .exec()
       .then((result) => {
         console.log(result);
@@ -26,11 +28,39 @@ export default {
         });
       });
   },
+  commentsPostList(req, res, next) {
+    Post.findById(req.params.postId)
+      .then((post) => {
+        if (!post) {
+          return res.status(404).json({
+            message: 'Post not found',
+          });
+        }
+        return Comment.find({
+          post: req.params.postId,
+        })
+          .select('-__v');// everything except __v
+        // .populate('author')
+      })
+      .then((result) => {
+        console.log(result);
+        res.status(201).json({
+          comments: result,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          error: err,
+        });
+      });
+  },
   commentsDetail(req, res, next) {
     const commentId = req.params.id;
 
     Comment.findById(commentId)
       .select('-__v') // everything except __v
+      // .populate('author')
       .exec()
       .then((result) => {
         console.log(result);
@@ -52,14 +82,23 @@ export default {
       });
   },
   commentsCreate(req, res, next) {
-    const comment = new Comment({
-      _id: new mongoose.Types.ObjectId(),
-      text: req.body.text,
-      author: req.body.author,
-      post: req.body.post,
-    });
-    comment.save()
-      .exec()
+    Post.findById(req.body.post)
+      .then((post) => {
+        if (!post) {
+          return res.status(404).json({
+            message: 'Post not found',
+          });
+        }
+
+        const comment = new Comment({
+          _id: new mongoose.Types.ObjectId(),
+          text: req.body.text,
+          author: req.body.author,
+          post: req.body.post,
+        });
+
+        return comment.save();
+      })
       .then((result) => {
         console.log(result);
         res.status(201).json({
@@ -86,8 +125,8 @@ export default {
     })
       .exec()
       .then((result) => {
-        res.status(204).json({
-          post: result,
+        res.status(200).json({
+          comment: result,
         });
       })
       .catch((err) => {

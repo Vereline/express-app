@@ -4,12 +4,13 @@ import demo from './demo';
 import login from './login';
 import signup from './signup';
 import posts from './posts';
+import comments from './comments';
 
 const { Router } = express;
 const api = Router();
 
 // internal middleware
-// router.use(middlewares());
+// api.use(middlewares());
 
 // '/api/'
 api.get('/', (req, res) => {
@@ -26,5 +27,6 @@ api.use('/demo', demo);
 api.use('/login/', login);
 api.use('/signup/', signup);
 api.use('/posts', posts);
+api.use('/comments', comments);
 
 export default api;

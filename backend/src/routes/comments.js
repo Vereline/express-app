@@ -36,6 +36,42 @@ api.get('/', comments.commentsList);
 
 /**
  * @swagger
+ * /api/comments/{postId}:
+ *   get:
+ *     tags: ["Comments"]
+ *     description: Returns list of existing comments for defined post
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: Success
+ *         schema:
+ *           $ref: '#/definitions/comments'
+ *     parameters:
+ *      - name: postId
+ *        in: path
+ *        description: ID of post for comments
+ *        required: true
+ *        schema:
+ *          type : integer
+ *          format: int64
+ *          minimum: 1
+ *      - in: query
+ *        name: offset
+ *        type: integer
+ *        description: The number of items to skip before starting to collect the result set.
+ *      - in: query
+ *        name: limit
+ *        type: integer
+ *        description: The numbers of items to return.
+ *     security:
+ *      - JWT: [read, write, admin]
+ *      - bearerAuth: [read, write, admin]
+ */
+api.get('/:postId', comments.commentsPostList);
+
+/**
+ * @swagger
  * /api/comments/{id}:
  *   get:
  *     tags: ["Comments"]

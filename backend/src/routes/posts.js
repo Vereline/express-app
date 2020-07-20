@@ -1,8 +1,10 @@
 import express from 'express';
 import postsController from '../controllers';
+import uploadMiddleware from '../middlewares';
 
 const { Router } = express;
 const { posts } = postsController;
+const { upload } = uploadMiddleware;
 
 const api = Router();
 
@@ -93,6 +95,45 @@ api.get('/:id', posts.postsDetail);
  *      - bearerAuth: [read, write, admin]
  */
 api.post('/', posts.postsCreate);
+
+/**
+ * @swagger
+ * /api/posts/postwithimage:
+ *   post:
+ *     tags: ["Posts"]
+ *     description: Create new post with image
+ *     consumes:
+ *      - multipart/form-data
+ *     responses:
+ *       200:
+ *         description: Success
+ *         schema:
+ *           $ref: '#/definitions/posts'
+ *     parameters:
+ *      - in: formData
+ *        name: image
+ *        type: file
+ *        description: The file to upload.
+ *      - in: formData
+ *        name: title
+ *        type: string
+ *        required: false
+ *        description: Post title.
+ *      - in: formData
+ *        name: postText
+ *        type: string
+ *        required: false
+ *        description: Post text.
+ *      - in: formData
+ *        name: author
+ *        type: string
+ *        required: false
+ *        description: Id of author.
+ *     security:
+ *      - JWT: [read, write, admin]
+ *      - bearerAuth: [read, write, admin]
+ */
+api.post('/postwithimage', upload.single('image'), posts.postsCreate);
 
 /**
  * @swagger
