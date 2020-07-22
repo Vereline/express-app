@@ -1,8 +1,8 @@
 import express from 'express';
-import demoController from '../controllers';
+import loginController from '../controllers';
 
 const { Router } = express;
-const { demo } = demoController;
+const { login } = loginController;
 
 const api = Router();
 
@@ -20,6 +20,6 @@ const api = Router();
  *         schema:
  *           $ref: '#/definitions/login'
  */
-api.post('/', demo.hi);
+api.post('/', login.loginUser);
 
 export default api;

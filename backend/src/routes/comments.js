@@ -1,8 +1,10 @@
 import express from 'express';
 import commentsController from '../controllers';
+import checkAuthMiddleware from '../middlewares';
 
 const { Router } = express;
 const { comments } = commentsController;
+const { checkAuth } = checkAuthMiddleware;
 
 const api = Router();
 
@@ -32,7 +34,7 @@ const api = Router();
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.get('/', comments.commentsList);
+api.get('/', checkAuth.checkAuth, comments.commentsList);
 
 /**
  * @swagger
@@ -68,7 +70,7 @@ api.get('/', comments.commentsList);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.get('/:postId', comments.commentsPostList);
+api.get('/:postId', checkAuth.checkAuth, comments.commentsPostList);
 
 /**
  * @swagger
@@ -100,7 +102,7 @@ api.get('/:postId', comments.commentsPostList);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.get('/:id', comments.commentsDetail);
+api.get('/:id', checkAuth.checkAuth, comments.commentsDetail);
 
 /**
  * @swagger
@@ -128,7 +130,7 @@ api.get('/:id', comments.commentsDetail);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.post('/', comments.commentsCreate);
+api.post('/', checkAuth.checkAuth, comments.commentsCreate);
 
 /**
  * @swagger
@@ -168,7 +170,7 @@ api.post('/', comments.commentsCreate);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.patch('/:id', comments.commentsUpdate);
+api.patch('/:id', checkAuth.checkAuth, comments.commentsUpdate);
 
 /**
  * @swagger
@@ -200,6 +202,6 @@ api.patch('/:id', comments.commentsUpdate);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.delete('/:id', comments.commentsDelete);
+api.delete('/:id', checkAuth.checkAuth, comments.commentsDelete);
 
 export default api;

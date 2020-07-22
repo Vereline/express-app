@@ -1,8 +1,8 @@
 import express from 'express';
-import demoController from '../controllers';
+import signupController from '../controllers';
 
 const { Router } = express;
-const { demo } = demoController;
+const { signup } = signupController;
 
 const api = Router();
 
@@ -20,6 +20,6 @@ const api = Router();
  *         schema:
  *           $ref: '#/definitions/signup'
  */
-api.post('/', demo.hi);
+api.post('/', signup.signupUser);
 
 export default api;

@@ -19,27 +19,47 @@
  *   login:
  *     type: object
  *     properties:
- *       hello:
+ *       email:
  *         type: string
- *         description: Perform login
+ *       password:
+ *         type: string
  *   signup:
  *     type: object
  *     properties:
- *       hello:
+ *       email:
  *         type: string
- *         description: Perform signup
+ *       password:
+ *         type: string
+ *       birthDate:
+ *         type: string
+ *       firstName:
+ *         type: string
+ *       lastName:
+ *         type: string
+ *       isAdmin:
+ *         type: boolean
  *   posts:
- *     type: object
- *     properties:
- *       hello:
- *         type: string
- *         description: Get list of posts
+ *     type: array
+ *     items:
+ *       type: object
+ *       properties:
+ *         title:
+ *           type: string
+ *           description: Get post detail
+ *         postText:
+ *           type: string
+ *         author:
+ *           type: integer
  *   post:
  *     type: object
  *     properties:
- *       hello:
+ *       title:
  *         type: string
  *         description: Get post detail
+ *       postText:
+ *         type: string
+ *       author:
+ *         type: integer
  *   postCreate:
  *     type: object
  *     properties:
@@ -51,17 +71,27 @@
  *       author:
  *         type: integer
  *   comments:
- *     type: object
- *     properties:
- *       hello:
- *         type: string
- *         description: Get list of comments
+ *     type: array
+ *     items:
+ *       type: object
+ *       properties:
+ *         text:
+ *           type: string
+ *           description: Get comment detail
+ *         post:
+ *           type: integer
+ *         author:
+ *           type: integer
  *   comment:
  *     type: object
  *     properties:
- *       hello:
+ *       text:
  *         type: string
  *         description: Get comment detail
+ *       post:
+ *         type: integer
+ *       author:
+ *         type: integer
  *   commentCreate:
  *     type: object
  *     properties:
@@ -71,4 +101,51 @@
  *         type: integer
  *       author:
  *         type: integer
+ *   users:
+ *     type: array
+ *     items:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *         password:
+ *           type: string
+ *         birthDate:
+ *           type: string
+ *         firstName:
+ *           type: string
+ *         lastName:
+ *           type: string
+ *         isAdmin:
+ *           type: boolean
+ *   user:
+ *     type: object
+ *     properties:
+ *       email:
+ *         type: string
+ *       password:
+ *         type: string
+ *       birthDate:
+ *         type: string
+ *       firstName:
+ *         type: string
+ *       lastName:
+ *         type: string
+ *       isAdmin:
+ *         type: boolean
+ *   userCreate:
+ *     type: object
+ *     properties:
+ *       email:
+ *         type: string
+ *       password:
+ *         type: string
+ *       birthDate:
+ *         type: string
+ *       firstName:
+ *         type: string
+ *       lastName:
+ *         type: string
+ *       isAdmin:
+ *         type: boolean
  */

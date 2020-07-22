@@ -1,10 +1,10 @@
 import express from 'express';
 import postsController from '../controllers';
-import uploadMiddleware from '../middlewares';
+import middlewares from '../middlewares';
 
 const { Router } = express;
 const { posts } = postsController;
-const { upload } = uploadMiddleware;
+const { upload, checkAuth } = middlewares;
 
 const api = Router();
 
@@ -34,7 +34,7 @@ const api = Router();
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.get('/', posts.postsList);
+api.get('/', checkAuth.checkAuth, posts.postsList);
 
 /**
  * @swagger
@@ -66,7 +66,7 @@ api.get('/', posts.postsList);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.get('/:id', posts.postsDetail);
+api.get('/:id', checkAuth.checkAuth, posts.postsDetail);
 
 /**
  * @swagger
@@ -94,7 +94,7 @@ api.get('/:id', posts.postsDetail);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.post('/', posts.postsCreate);
+api.post('/', checkAuth.checkAuth, posts.postsCreate);
 
 /**
  * @swagger
@@ -133,7 +133,8 @@ api.post('/', posts.postsCreate);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.post('/postwithimage', upload.single('image'), posts.postsCreate);
+// No actual need in this, this was made firstly for swagger needs
+api.post('/postwithimage', checkAuth.checkAuth, upload.single('image'), posts.postsCreate);
 
 /**
  * @swagger
@@ -173,7 +174,7 @@ api.post('/postwithimage', upload.single('image'), posts.postsCreate);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.patch('/:id', posts.postsUpdate);
+api.patch('/:id', checkAuth.checkAuth, posts.postsUpdate);
 
 /**
  * @swagger
@@ -205,6 +206,6 @@ api.patch('/:id', posts.postsUpdate);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.delete('/:id', posts.postsDelete);
+api.delete('/:id', checkAuth.checkAuth, posts.postsDelete);
 
 export default api;

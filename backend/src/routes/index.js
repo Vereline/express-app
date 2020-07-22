@@ -5,6 +5,7 @@ import login from './login';
 import signup from './signup';
 import posts from './posts';
 import comments from './comments';
+import users from './users';
 
 const { Router } = express;
 const api = Router();
@@ -28,5 +29,6 @@ api.use('/login/', login);
 api.use('/signup/', signup);
 api.use('/posts', posts);
 api.use('/comments', comments);
+api.use('/users', users);
 
 export default api;
