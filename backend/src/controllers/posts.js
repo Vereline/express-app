@@ -5,8 +5,8 @@ import Post from '../models/post';
 export default {
   postsList(req, res, next) {
     Post.find()
+      .populate('author')
       .select('-__v') // everything except __v
-      // .populate('author')
       .exec()
       .then((result) => {
         console.log(result);
@@ -33,8 +33,8 @@ export default {
 
     Post.findById(postId)
       // .select('title postText updatedAt createdAt _id')
+      .populate('author')
       .select('-__v') // everything except __v
-      // .populate('author')
       .exec()
       .then((result) => {
         if (result) {
@@ -88,11 +88,16 @@ export default {
   },
   postsUpdate(req, res, next) {
     const postId = req.params.id;
-    const updateData = {
+    let updateData = {
       updatedAt: new Date(Date.now()),
       // author: req.body.authorId,
       ...req.body,
     };
+
+    if (req.file) {
+      updateData.image = req.file.path;
+    }
+
     Post.update({ _id: postId }, {
       $set: {
         ...updateData,

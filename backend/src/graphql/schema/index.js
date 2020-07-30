@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import { ApolloServer, gql } from 'apollo-server-express';
 import { merge } from 'lodash';
+import jwt from 'jsonwebtoken';
+import config from '../../config';
 
 const Query = gql`
  type Query {
@@ -44,6 +46,17 @@ const schema = new ApolloServer({
     settings: {
       'editor.theme': 'dark',
     },
+  },
+  context: ({ req }) => {
+    let userData = null;
+    try {
+      const token = req.headers.authorization.split(' ')[1];
+      userData = jwt.verify(token, config.JWT_KEY);
+      return { userData };
+    } catch (error) {
+      console.log('Token is missing or incorrect');
+    }
+    return { userData };
   },
 });
 

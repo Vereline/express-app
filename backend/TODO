@@ -62,6 +62,11 @@ https://github.com/airbnb/javascript
 
 // graphql 
 https://medium.com/@xoor/coding-a-graphql-api-with-node-js-c02d617f49f4
+https://medium.com/the-ideal-system/graphql-and-mongodb-a-quick-example-34643e637e49
+https://graphql.org/graphql-js/constructing-types/
+
+// Graphql File upload
+https://www.apollographql.com/docs/apollo-server/data/file-uploads/
 
 // Mongo in container
 https://devops.ionos.com/tutorials/creating-a-mongodb-docker-container-with-an-attached-storage-volume/

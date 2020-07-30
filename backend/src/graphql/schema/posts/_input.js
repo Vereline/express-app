@@ -1,11 +1,17 @@
 import { gql } from 'apollo-server-express';
 
 const Input = gql`
+   input File {
+      filename: String!
+      mimetype: String!
+      encoding: String!
+   }
+
    input PostInput {
       title: String!
       postText: String!
-      image: String!
-      author: String!
+      image: File
+      author: String
    } 
 `;
 

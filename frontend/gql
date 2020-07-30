@@ -1,0 +1,167 @@
+ query getPosts {
+  posts {
+    _id,
+    postText,
+    title,
+    author {
+      _id,
+      firstName,
+      lastName,
+      email,
+      isAdmin
+    },
+    comments {
+      _id
+    },
+    createdAt,
+    updatedAt,
+    image
+  }
+}
+
+
+ query getPost($id: String!) {
+  post(_id: $id) {
+    _id,
+    postText,
+    title,
+        author {
+      _id,
+      firstName,
+      lastName,
+      email,
+      isAdmin
+    },
+    comments {
+      _id
+    },
+    createdAt,
+    updatedAt,
+    image
+  }
+}
+{
+  "id": "5f0e23de90c02b6854699725"
+}
+{
+  "Authorization": "Bearer asdasdasd"
+}
+
+
+
+mutation createBlog($postData: PostInput) {
+      createPost(postData: $postData) {
+				postText
+    		title
+    }
+}
+
+{
+  "postData": {
+    "title": "asd",
+    "postText": "asd",
+  }
+}
+
+
+
+
+mutation updateBlog($id: String!, $postData: PostInput) {mutation createComment($commentData: CommentInput) {
+      createComment(commentData: $commentData) {
+				text
+    		post
+    		author
+    }
+}
+      updatePost(_id:$id,  postData: $postData) {
+				postText
+    		title
+    }
+}
+
+{
+  "id": "asasdasdasdsa",
+  "postData": {
+    "title": "asd",
+    "postText": "asd"
+  }
+}
+
+
+
+
+mutation updateComment($id: String!, $commentData: CommentInput) {
+      updateComment(_id:$id,  commentData: $commentData) {
+				text
+    		post
+    		author
+    }
+}
+
+{
+  "id": "asasdasdasdsa",
+  "commentData": {
+    "text": "asd",
+    "post": "post",
+    "author": "author"
+  }
+}
+
+
+
+mutation createComment($commentData: CommentInput) {
+      createComment(commentData: $commentData) {
+				text
+    		post
+    		author
+    }
+}
+
+{
+  "commentData": {
+    "text": "asd",
+    "post": "post",
+    "author": "author"
+  }
+}
+
+
+
+
+query getComments {
+    comments {
+    _id,
+    text,
+    author {
+      _id,
+      firstName,
+      lastName,
+      email,
+      isAdmin
+    },
+    createdAt,
+    updatedAt,
+  }
+}
+
+
+query getComment($id: String!) {
+    comment(_id: $id) {
+    _id,
+    text,
+    author {
+      _id,
+      firstName,
+      lastName,
+      email,
+      isAdmin
+    },
+    createdAt,
+    updatedAt,
+  }
+}
+
+
+{
+  "id": "12313213"
+}

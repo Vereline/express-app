@@ -5,8 +5,8 @@ import Post from '../models/post';
 export default {
   commentsList(req, res, next) {
     Comment.find()
+      .populate('author')
       .select('-__v') // everything except __v
-    // .populate('author')
       .exec()
       .then((result) => {
         console.log(result);
@@ -39,8 +39,8 @@ export default {
         return Comment.find({
           post: req.params.postId,
         })
+          .populate('author')
           .select('-__v');// everything except __v
-        // .populate('author')
       })
       .then((result) => {
         console.log(result);
@@ -59,8 +59,8 @@ export default {
     const commentId = req.params.id;
 
     Comment.findById(commentId)
+      .populate('author')
       .select('-__v') // everything except __v
-      // .populate('author')
       .exec()
       .then((result) => {
         console.log(result);

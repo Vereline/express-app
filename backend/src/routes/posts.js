@@ -176,6 +176,62 @@ api.post('/postwithimage', checkAuth.checkAuth, upload.single('image'), posts.po
  */
 api.patch('/:id', checkAuth.checkAuth, posts.postsUpdate);
 
+
+/**
+ * @swagger
+ * /api/posts/updatewithimage/{id}:
+ *   patch:
+ *     tags: ["Posts"]
+ *     description: Updates post by id with image
+ *     produces:
+ *      - application/json
+ *     consumes:
+ *      - multipart/form-data
+ *     responses:
+ *       200:
+ *         description: Success
+ *         schema:
+ *           $ref: '#/definitions/post'
+ *       404:
+ *         description: Error
+ *         schema:
+ *           $ref: '#/definitions/notFound'
+ *     parameters:
+ *      - name: id
+ *        in: path
+ *        description: ID of post to update
+ *        required: true
+ *        schema:
+ *          type : integer
+ *          format: int64
+ *          minimum: 1
+ *      - in: formData
+ *        name: image
+ *        type: file
+ *        description: The file to upload.
+ *      - in: formData
+ *        name: title
+ *        type: string
+ *        required: false
+ *        description: Post title.
+ *      - in: formData
+ *        name: postText
+ *        type: string
+ *        required: false
+ *        description: Post text.
+ *      - in: formData
+ *        name: author
+ *        type: string
+ *        required: false
+ *        description: Id of author.
+ *     security:
+ *      - JWT: [read, write, admin]
+ *      - bearerAuth: [read, write, admin]
+ */
+// No actual need in this, this was made firstly for swagger needs
+api.patch('updatewithimage/:id', checkAuth.checkAuth, upload.single('image'), posts.postsUpdate);
+
+
 /**
  * @swagger
  * /api/posts/{id}:
