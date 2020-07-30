@@ -14,6 +14,13 @@ const api = Router();
  *     description: Returns authentication token
  *     produces:
  *      - application/json
+ *     parameters:
+ *      - name: post
+ *        in: body
+ *        description: Body for log in
+ *        required: true
+ *        schema:
+ *          $ref: '#/definitions/login'
  *     responses:
  *       201:
  *         description: Success

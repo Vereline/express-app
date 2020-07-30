@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import config from '../config';
 import User from '../models/user';
 
 export default {
@@ -22,13 +24,28 @@ export default {
             _id: new mongoose.Types.ObjectId(),
             email: req.body.email,
             password: hash,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            birthDate: req.body.birthDate,
+            isAdmin: req.body.isAdmin,
           });
           createdUser
             .save()
             .then((result) => {
               console.log(result);
+              const token = jwt.sign(
+                {
+                  email: result.email,
+                  userId: result._id,
+                },
+                config.JWT_KEY,
+                {
+                  expiresIn: '1h',
+                },
+              );
               res.status(201).json({
                 message: 'User was successfully created',
+                token,
               });
             })
             .catch((error) => {
