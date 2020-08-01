@@ -33,6 +33,9 @@
 3. Загрузка файлов и сохранение на сервере
 4. Интерфейс должен быть доступен и с десктопа, и с мобильного устройства
 
+
+TODO: set up debug (while debugging "iconv": "^3.0.0", <- this stuff is required (why?) figure it out and set up correct debugging)
+
 // Node js
 https://nodejs.org/en/ 
 
@@ -117,3 +120,15 @@ https://code.tutsplus.com/tutorials/file-upload-with-multer-in-node--cms-32088
 // swagger editor
 https://editor.swagger.io/
 https://app.swaggerhub.com/home
+
+
+//websockets
+https://medium.com/factory-mind/websocket-node-js-express-step-by-step-using-typescript-725114ad5fe4
+https://habr.com/ru/company/ruvds/blog/424557/
+https://allwebstuff.info/%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%91%D0%BC-api-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80-%D0%BD%D0%B0-expressjs-websockets
+https://masteringjs.io/tutorials/express/websockets
+
+
+// Graphql file upload example
+https://github.com/jaydenseric/apollo-upload-examples
+https://www.youtube.com/watch?v=V95tULgGpLo

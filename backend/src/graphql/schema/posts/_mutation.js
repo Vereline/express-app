@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-express';
+import { gql, AuthenticationError, ForbiddenError } from 'apollo-server-express';
 import Post from '../../../models/post';
 
 const prepare = (o) => {
@@ -16,16 +16,42 @@ const Mutation = gql`
 export const mutationTypes = () => [Mutation];
 
 export const mutationResolvers = {
-  Mutation: { // ?????
+  Mutation: {
     createPost: async (root, args, context, info) => {
       // TODO: before process file correctly
-      const res = await Post.insert(args);
-      return prepare(await Post.findOne({ _id: res.insertedIds[1] }));
+      if (context.user === null) {
+        throw new AuthenticationError('User is not authentiated');
+      }
+      if (context.user.isAdmin === false) {
+        throw new ForbiddenError('Only admins are allowed to perform this action');
+      }
+
+      const res = await Post.create(...args);
+      return prepare(await Post.findOne({ _id: res._id })); // return res ???
     },
     updatePost: async (root, args, context, info) => {
       // TODO: before process file correctly
-      const res = await Post.insert(args);
-      return prepare(await Post.findOne({ _id: res.insertedIds[1] }));
+
+      if (context.user === null) {
+        throw new AuthenticationError('User is not authentiated');
+      }
+
+      if (context.user.isAdmin === false) {
+        throw new ForbiddenError('Only admins are allowed to perform this action');
+      }
+
+      const postId = args._id;
+      const updateData = {
+        updatedAt: new Date(Date.now()),
+        ...args,
+      };
+
+      const res = await Post.update({ _id: postId }, {
+        $set: {
+          ...updateData,
+        },
+      });
+      return prepare(res);
     },
   },
 };

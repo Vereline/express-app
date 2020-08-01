@@ -1,9 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import { ApolloServer, gql } from 'apollo-server-express';
+// import { graphqlUploadExpress } from 'graphql-upload';
 import { merge } from 'lodash';
 import jwt from 'jsonwebtoken';
 import config from '../../config';
+import User from '../../models/user';
 
 const Query = gql`
  type Query {
@@ -22,6 +24,12 @@ let resolvers = {
     status: () => 'ok',
   },
 };
+
+
+async function getUser(userId) {
+  const user = await User.findById(userId);
+  return user;
+}
 
 const typeDefs = [Query, Mutation];
 
@@ -47,16 +55,19 @@ const schema = new ApolloServer({
       'editor.theme': 'dark',
     },
   },
-  context: ({ req }) => {
+  context: async ({ req }) => {
     let userData = null;
     try {
       const token = req.headers.authorization.split(' ')[1];
       userData = jwt.verify(token, config.JWT_KEY);
-      return { userData };
+
+      const user = getUser(userData.userId);
+
+      return { user };
     } catch (error) {
       console.log('Token is missing or incorrect');
     }
-    return { userData };
+    return { user: userData };
   },
 });
 

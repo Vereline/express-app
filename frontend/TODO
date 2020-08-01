@@ -14,3 +14,17 @@ https://www.youtube.com/watch?v=DBjPIabiRNg&list=PL55RiY5tL51qIb5VW2ywbT12UZeqmz
 https://www.youtube.com/watch?v=Xr5l7lT--YU&list=PL55RiY5tL51rVUDwCCUenDe4sEuw5RtsI
 // material
 https://www.youtube.com/watch?v=u679SQsfRVM&list=PL55RiY5tL51p2R1L8sxaYlzmWh6yIrX8k
+
+
+// localization
+https://angular.io/guide/i18n
+https://medium.com/fafnur/%D0%BB%D0%BE%D0%BA%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%B2-angular-9-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-angular-localize-806cdbf98aa
+
+
+
+//dynamic themes
+https://medium.com/grensesnittet/dynamic-themes-in-angular-material-b6dc0c88dfd7
+https://www.coditty.com/code/angular-material-create-theme-switch-component
+
+
+Generate new component: ng generate component xyz

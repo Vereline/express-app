@@ -8,10 +8,11 @@ const Input = gql`
    }
 
    input PostInput {
+      _id: String
       title: String!
       postText: String!
       image: File
-      author: String
+      author: String!
    } 
 `;
 
