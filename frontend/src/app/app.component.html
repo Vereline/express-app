@@ -530,5 +530,6 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-
-<router-outlet></router-outlet>
+<app-navbar (darkModeSwitched)="switchMode($event)">
+  <router-outlet></router-outlet>
+</app-navbar>

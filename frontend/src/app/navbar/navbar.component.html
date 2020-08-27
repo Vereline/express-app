@@ -24,6 +24,9 @@
       <a class="top-link" href="#">Blog</a>
       <a class="top-link" href="#">About</a>
       <span class="spacer"></span>
+      <span class="dark-mode-switch">
+        <mat-slide-toggle (change)="onDarkModeSwitched($event)"></mat-slide-toggle>
+      </span>
       <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon> -->
       <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon> -->
       <a href="#"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">login</mat-icon></a>
