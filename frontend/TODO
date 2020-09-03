@@ -28,7 +28,7 @@ https://www.coditty.com/code/angular-material-create-theme-switch-component
 
 
 Generate new component: ng generate component xyz
-
+Generate new servis: ng generate service hero
 
 // localize 
 https://www.freecodecamp.org/news/how-to-implement-localization-in-angular-using-i18n-tools-a88898b1a0d0/
@@ -44,5 +44,22 @@ https://www.youtube.com/watch?v=Q6qhzG7mObU
 https://www.youtube.com/watch?v=sM3ATKt8568
 
 
+// smart 404 routing
+https://webformyself.com/intellektualnaya-stranica-404-v-angular/
+
+
 Angular Redux analogues
 https://medium.com/fafnur/redux-%D0%B2-angular-%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F%D0%BC%D0%B8-%D0%B2-angular-%D1%81-%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C%D1%8E-ngrx-%D0%B8-nx-cea8c64f70e9
+
+
+Login and signup forms
+https://github.com/CodAffection/Angular-5-Login-and-Logout-in-Web-API-Using-Token-Based-Authentication/blob/master/
+https://www.youtube.com/watch?v=e8BlURn6SFk
+
+
+Angular protected routes
+https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3
+
+
+Login page and auth service
+https://developer.okta.com/blog/2020/01/21/angular-material-login

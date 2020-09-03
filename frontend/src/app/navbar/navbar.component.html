@@ -6,8 +6,8 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Blog</a>
-      <a mat-list-item href="#">About</a>
+      <a mat-list-item routerLink="/posts">Blog</a>
+      <a mat-list-item routerLink="/about">About</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,18 +20,34 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span class="logo-text">Express-app</span>
-      <a class="top-link" href="#">Blog</a>
-      <a class="top-link" href="#">About</a>
+      <span class="logo-text"><a class="top-link" routerLink="/">Express-app</a></span>
+      <span *ngIf="(isHandset$ | async) === false">
+        <a class="top-link" routerLink="/posts">Blog</a>
+        <a class="top-link" routerLink="/about">About</a>
+      </span>
       <span class="spacer"></span>
       <span class="dark-mode-switch">
         <mat-slide-toggle (change)="onDarkModeSwitched($event)"></mat-slide-toggle>
       </span>
       <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon> -->
       <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon> -->
-      <a href="#"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">login</mat-icon></a>
-      <a href="#"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">logout</mat-icon></a>
-      <a href="#"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">person</mat-icon></a>
+      <a routerLink="/login"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">login</mat-icon></a>
+      <a routerLink="/signup"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">input</mat-icon></a>
+      <a routerLink="/logout"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">logout</mat-icon></a>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">person</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <!-- <button mat-menu-item disabled> -->
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Profile settings</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
     </mat-toolbar>
     <ng-content ></ng-content>
   </mat-sidenav-content>

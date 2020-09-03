@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StartPageComponent } from './start-page/start-page.component';
 import { PostsPageComponent } from './posts-page/posts-page.component';
-import { UserPageComponent } from './user-page/user-page.component';
+import { UserPageComponent } from './user/user-page/user-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -17,6 +17,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { LoginPageComponent } from './user/login-page/login-page.component';
+import { SignupPageComponent } from './user/signup-page/signup-page.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { FormsModule }   from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +32,9 @@ import { MatCardModule } from '@angular/material/card';
     UserPageComponent,
     NotFoundPageComponent,
     NavbarComponent,
+    LoginPageComponent,
+    SignupPageComponent,
+    AboutPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +48,9 @@ import { MatCardModule } from '@angular/material/card';
     MatListModule,
     MatSlideToggleModule,
     MatCardModule,
+    MatMenuModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
