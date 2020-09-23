@@ -1,46 +1,25 @@
-<!-- 
-<div *ngIf="isLoginError" class="red-text center error-message">
-    <i class="material-icons">error</i> Incorrect username or password
-</div>
-<form #loginForm="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(UserName.value, Password.value)">
-   <div class="row">
-     <div class="input-field col s12">
-       <i class="material-icons prefix">account_circle</i>
-       <input type="text" #UserName ngModel name="UserName" placeholder="Username" required>
-     </div>
-   </div>
-   <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix">vpn_key</i>
-        <input type="password" #Password ngModel name="Password" placeholder="Password" required>
-      </div>
-    </div>
-    <div class="row">
-        <div class="input-field col s12">
-          <button [disabled]="!loginForm.valid" class="btn-large btn-submit" type="submit">Login</button>
-        </div>
-      </div>
-</form> -->
 <mat-card>
-    <mat-card-content>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <h2>Log In</h2>
-        <mat-error *ngIf="loginInvalid">
-          The username and password were not recognised
+  <mat-card-content>
+    <form>
+      <h2>Log in</h2>
+      <mat-error>
+        The email or password is not valid
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" required>
+        <mat-error>
+          Please provide a valid email
         </mat-error>
-        <mat-form-field class="full-width-input">
-          <input matInput placeholder="Email" formControlName="username" required>
-          <mat-error>
-            Please provide a valid email address
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width-input">
-          <input matInput type="password" placeholder="Password" formControlName="password" required>
-          <mat-error>
-            Please provide a valid password
-          </mat-error>
-        </mat-form-field>
-        <button mat-raised-button color="primary">Login</button>
-      </form>
-    </mat-card-content>
-  </mat-card>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="Password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Login</button>
+    </form>
+  </mat-card-content>
+</mat-card>

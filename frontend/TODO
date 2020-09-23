@@ -28,7 +28,7 @@ https://www.coditty.com/code/angular-material-create-theme-switch-component
 
 
 Generate new component: ng generate component xyz
-Generate new servis: ng generate service hero
+Generate new service: ng generate service hero
 
 // localize 
 https://www.freecodecamp.org/news/how-to-implement-localization-in-angular-using-i18n-tools-a88898b1a0d0/
@@ -63,3 +63,10 @@ https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-
 
 Login page and auth service
 https://developer.okta.com/blog/2020/01/21/angular-material-login
+
+
+templates
+https://colorlib.com/wp/angularjs-website-templates/
+
+// Nice admin template 
+https://onthecode.co.uk/angular-material-starter-template-for-your-next-project/

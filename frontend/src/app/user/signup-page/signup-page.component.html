@@ -1,1 +1,55 @@
-<p>signup-page works!</p>
+<mat-card>
+  <mat-card-content>
+    <form>
+      <h2>Sign up</h2>
+      <mat-error>
+        Please, fix errors below and try to sign up again
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" required>
+        <mat-error>
+          Please provide a valid email
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" required>
+        <mat-error>
+          Please provide a valid first name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last Name" required>
+        <mat-error>
+          Please provide a valid last name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <mat-label>Birth Date</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Birth Date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>
+            Please provide a valid birth date
+          </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" placeholder="Password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <mat-label>Password Confirmation</mat-label>
+        <input matInput type="password" placeholder="Password Confirmation" required>
+        <mat-error>
+          Please provide a valid password confirmation
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Signup</button>
+    </form> 
+  </mat-card-content>
+</mat-card>
