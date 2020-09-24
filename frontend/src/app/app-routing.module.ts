@@ -8,12 +8,15 @@ import { LoginPageComponent } from './user/login-page/login-page.component';
 import { SignupPageComponent } from './user/signup-page/signup-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { PathResolveService } from './services/path-resolve.service';
+import { 
+  ProtectedRouteService as ProtectedRoute 
+} from './services/user/protected-route.service';
 import { paths } from './app-paths';
 
 const routes: Routes = [
   { path: paths.home, pathMatch: 'full', component: StartPageComponent },
-  { path: paths.posts, component: PostsPageComponent },
-  { path: paths.user, component: UserPageComponent },
+  { path: paths.posts, component: PostsPageComponent, canActivate: [ProtectedRoute] },
+  { path: paths.user, component: UserPageComponent, canActivate: [ProtectedRoute] },
   { path: paths.login, component: LoginPageComponent },
   { path: paths.signup, component: SignupPageComponent },
   { path: paths.about, component: AboutPageComponent },

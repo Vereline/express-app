@@ -37,6 +37,7 @@ export default {
                 {
                   email: result.email,
                   userId: result._id,
+                  isAdmin: result.isAdmin,
                 },
                 config.JWT_KEY,
                 {

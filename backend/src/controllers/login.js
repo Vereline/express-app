@@ -9,7 +9,7 @@ export default {
       .exec()
       .then((user) => {
         if (user.length < 1) {
-          res.status(401).json({
+          return res.status(401).json({
             message: 'Auth failed',
           });
         }
@@ -24,27 +24,50 @@ export default {
               {
                 email: user[0].email,
                 userId: user[0]._id,
+                isAdmin: user[0].isAdmin,
               },
               config.JWT_KEY,
               {
                 expiresIn: '1h',
               },
             );
-            res.status(200).json({
+            return res.status(200).json({
               message: 'Auth successful',
               token,
             });
           }
-          res.status(401).json({
+          return res.status(401).json({
             message: 'Auth failed',
           });
         });
       })
       .catch((err) => {
         console.log(err);
-        res.status(500).json({
+        return res.status(500).json({
           error: err,
         });
       });
+  },
+
+  verifyToken(req, res, next) {
+    try {
+      const token = req.headers.authorization.split(' ')[1];
+      const decoded = jwt.verify(token, config.JWT_KEY);
+      req.userData = decoded;
+      // decoded Data example
+      // {
+      //   email: 'string@string.com',
+      //   userId: '5f230121713e4e04ab16f9d9',
+      //   iat: 1596142241,
+      //   exp: 1596145841
+      // }
+      return res.status(200).json({
+        message: 'Token is valid',
+      });
+    } catch (error) {
+      return res.status(401).json({
+        message: 'Token is invalid or expired',
+      });
+    }
   },
 };

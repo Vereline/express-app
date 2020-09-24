@@ -1,34 +1,34 @@
 <mat-card>
   <mat-card-content>
-    <form>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
       <h2>Sign up</h2>
-      <mat-error>
-        Please, fix errors below and try to sign up again
+      <mat-error *ngIf="isSignupError">
+        Please, fix errors in the form and try to sign up again
       </mat-error>
       <mat-form-field class="full-width-input">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" required>
+        <input matInput placeholder="Email" formControlName="email" required>
         <mat-error>
           Please provide a valid email
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>First Name</mat-label>
-        <input matInput placeholder="First Name" required>
+        <input matInput placeholder="First Name" formControlName="firstName" required>
         <mat-error>
           Please provide a valid first name
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Last Name" required>
+        <input matInput placeholder="Last Name" formControlName="lastName" required>
         <mat-error>
           Please provide a valid last name
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>Birth Date</mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="Birth Date" required>
+        <input matInput [matDatepicker]="picker" placeholder="Birth Date" formControlName="birthDate" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error>
@@ -37,14 +37,14 @@
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>Password</mat-label>
-        <input matInput type="password" placeholder="Password" required>
+        <input matInput type="password" placeholder="Password" formControlName="password" required>
         <mat-error>
           Please provide a valid password
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>Password Confirmation</mat-label>
-        <input matInput type="password" placeholder="Password Confirmation" required>
+        <input matInput type="password" placeholder="Password Confirmation" formControlName="passwordConfirmation" required [errorStateMatcher]="matcher">
         <mat-error>
           Please provide a valid password confirmation
         </mat-error>

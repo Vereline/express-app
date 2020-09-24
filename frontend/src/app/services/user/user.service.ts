@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from './user.model';
 
 @Injectable({
@@ -7,26 +8,33 @@ import { User } from './user.model';
 })
 export class UserService {
 
-  readonly rootUrl = 'http://localhost:35257';
-  constructor(private http: HttpClient) { }
+  readonly rootUrl = 'http://localhost:3005';
+  constructor(private http: HttpClient, public jwtHelper: JwtHelperService) { }
 
-  registerUser(user: User) {
+  userRegistration(user: User) {
     const body: User = {
-      UserName: user.UserName,
       Password: user.Password,
       Email: user.Email,
       FirstName: user.FirstName,
       LastName: user.LastName,
       BirthDate: user.BirthDate,
     }
-    var reqHeader = new HttpHeaders({'No-Auth':'True'});
-    return this.http.post(this.rootUrl + '/api/User/Register', body,{headers : reqHeader});
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.rootUrl + '/api/signup', body, {headers : reqHeader});
   }
 
-  userAuthentication(userName, password) {
-    var data = "username=" + userName + "&password=" + password + "&grant_type=password";
-    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded','No-Auth':'True' });
-    return this.http.post(this.rootUrl + '/token', data, { headers: reqHeader });
+  userAuthentication(email, password) {
+    // console.log(email, password)
+    var data = { email, password };
+    var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.rootUrl + '/api/login', data, { headers: reqHeader });
+  }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
   }
 
   getUserClaims(){

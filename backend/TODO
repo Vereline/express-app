@@ -141,3 +141,12 @@ https://auth0.com/blog/build-and-secure-a-graphql-server-with-node-js/
 // social oauth
 http://www.passportjs.org/packages/passport-github/
 https://github.com/jaredhanson/passport
+
+
+// jwt verify and refresh???
+https://stackabuse.com/authentication-and-authorization-with-jwts-in-express-js/
+https://livecodestream.dev/post/2020-08-11-a-practical-guide-to-jwt-authentication-with-nodejs/
+
+
+// Understanding Node Error [ERR_HTTP_HEADERS_SENT]
+https://www.codementor.io/@oparaprosper79/understanding-node-error-err_http_headers_sent-117mpk82z8

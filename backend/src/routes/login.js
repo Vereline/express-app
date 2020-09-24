@@ -29,4 +29,21 @@ const api = Router();
  */
 api.post('/', login.loginUser);
 
+/**
+ * @swagger
+ * /api/login/token/:
+ *   post:
+ *     tags: ["Login"]
+ *     description: Check if token is valid
+ *     produces:
+ *      - application/json
+ *     responses:
+ *       200:
+ *         description: Success
+ *     security:
+ *      - JWT: [read, write, admin]
+ *      - bearerAuth: [read, write, admin]
+ */
+api.post('/token', login.verifyToken);
+
 export default api;

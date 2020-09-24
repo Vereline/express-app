@@ -14,9 +14,9 @@ export default {
       //   iat: 1596142241,
       //   exp: 1596145841
       // }
-      next();
+      return next();
     } catch (error) {
-      res.status(401).json({
+      return res.status(401).json({
         message: 'Token is invalid or expired',
       });
     }

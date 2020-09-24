@@ -36,6 +36,8 @@ import { InfoBlockComponent } from './shared/info-block/info-block.component';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { ReactiveFormsModule } from '@angular/forms';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -76,17 +78,20 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule, 
-    FlexLayoutModule, 
-    FontAwesomeModule, 
-    SwiperModule, 
+    MatNativeDateModule,
+    FlexLayoutModule,
+    FontAwesomeModule,
+    SwiperModule,
+    ReactiveFormsModule,
   ],
   providers: [  
     MatDatepickerModule,
     {
       provide: SWIPER_CONFIG,
       useValue: DEFAULT_SWIPER_CONFIG
-    }  
+    },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService 
   ],
   bootstrap: [AppComponent]
 })
