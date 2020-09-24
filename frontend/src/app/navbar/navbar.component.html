@@ -40,12 +40,16 @@
       <mat-menu #menu="matMenu">
         <!-- <button mat-menu-item disabled> -->
         <button mat-menu-item>
-          <mat-icon>settings</mat-icon>
-          <span>Profile settings</span>
+          <a routerLink="/user">
+            <mat-icon>settings</mat-icon>
+            <span>Profile settings</span>
+          </a>
         </button>
         <button mat-menu-item>
-          <mat-icon>logout</mat-icon>
-          <span>Logout</span>
+          <a routerLink="/logout">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </a>
         </button>
       </mat-menu>
     </mat-toolbar>

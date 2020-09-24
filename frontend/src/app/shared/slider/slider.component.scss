@@ -1,0 +1,66 @@
+@import '~swiper/swiper-bundle.min.css';
+
+$white: #ffffff;
+
+.main-slider{
+    // height: 760px;
+    .sl-wrap {
+      position: relative;
+      height: 100%;
+      padding: 10px;
+
+      .content{
+        height: 100%;
+        position: relative;
+        z-index: 9;
+        vertical-align: middle;
+        position: relative;
+        text-align: center;
+
+        button {
+          border-radius: 0;
+          padding: 5px 33px;
+          width: 200px;
+          margin: 0 auto;
+          margin-top: 20px;
+
+          span {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+          }
+        }
+
+        h1{
+          font-size: 48px;
+          text-align: center;
+          color: $white;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          margin-bottom: 0;
+      }
+    
+        p{
+          font-size: 19px;
+          text-align: center;
+          color: $white;
+          margin-bottom: 30px;
+          font-weight: 400;
+           width: 756px;
+           margin: 0 auto;
+           line-height: 35px;
+        }
+      }
+    }
+  
+    .slide-item{
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .content {
+      padding-left: 10px;
+      padding-right: 10px;
+    }  
+  }

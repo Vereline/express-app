@@ -1,0 +1,35 @@
+.about-products {
+    padding: 90px 0;
+    // background: $background;
+    .about-products-wrap {
+    .left {
+     .text {
+       text-align: center;
+       padding: 0 50px;
+     h3 {
+      text-align: center;
+      margin-bottom: 10px;
+     }
+     span {
+      font-weight: 500;
+      line-height: 26px;
+      margin-top: 10px;
+     }
+     p {
+      line-height: 26px;
+     }
+     .btn-project {
+       margin-top: 20px;
+     }
+     }
+    }
+    .right {
+     .img-wrap {
+       img {
+         max-width: 100%;
+         height: auto;
+       }
+     }
+    }
+    }
+  }

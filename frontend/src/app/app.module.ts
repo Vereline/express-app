@@ -27,9 +27,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { PostComponent } from './posts/post/post.component';
 import { PostPageComponent } from './posts/post-page/post-page.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FooterComponent } from './shared/footer/footer.component';
+import { SliderComponent } from './shared/slider/slider.component';
+import { InfoBlockComponent } from './shared/info-block/info-block.component';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 
 @NgModule({
   declarations: [
@@ -42,8 +53,10 @@ import { PostPageComponent } from './posts/post-page/post-page.component';
     LoginPageComponent,
     SignupPageComponent,
     AboutPageComponent,
-    PostComponent,
     PostPageComponent,
+    FooterComponent,
+    SliderComponent,
+    InfoBlockComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,9 +77,16 @@ import { PostPageComponent } from './posts/post-page/post-page.component';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule, 
+    FlexLayoutModule, 
+    FontAwesomeModule, 
+    SwiperModule, 
   ],
   providers: [  
-    MatDatepickerModule,  
+    MatDatepickerModule,
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }  
   ],
   bootstrap: [AppComponent]
 })

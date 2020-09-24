@@ -1,0 +1,112 @@
+$white: #ffffff;
+$grey4: #444;
+
+.footer {
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    .container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 15px !important;
+
+        .footer-wrapper {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    .footer-widget {
+        padding-right: 15px;
+        text-align: center;
+
+        .social {
+            margin-top: 20px;
+            li {
+              width: 33px;
+              height: 33px;
+              border: 1px solid $grey4;
+              border-radius: 50%;
+              text-align: center;
+              margin-right: 5px;
+              
+              a {
+                i {
+                  color: $white;
+                  width: 50%;
+                }
+              }
+      
+            }
+        }
+
+        .title {
+            margin-bottom: 10px;
+            h5 {
+                color: $white;
+                font-size: 18px;
+                font-weight: 600;
+            }
+        }
+    
+        a {
+            text-decoration: none;
+            font-size: 15px;
+            line-height: 32px;
+            color: $white;
+        }
+    
+    
+        .newsletter-widget {
+            position: relative;
+            margin: 15px 0 20px 0;
+        }
+    
+        p {
+            line-height: 24px;
+            color: $white;
+            font-weight: 300;
+            font-size: 15px;
+        }
+
+        ul {
+        list-style-type: none;
+        padding-inline-start: 0;
+        }
+
+        .about-widget {
+            .logo {
+                img {
+                    max-width: 240px;
+                }
+            }
+        }
+
+        .tel-box {
+            .icon {
+                i {
+                    color: $white;
+                    display: block;
+                    line-height: 27px;
+                    vertical-align: middle;
+                    margin-right: 5px;
+                    width: 18px;
+                    text-align: center;
+                    font-size: 18px;
+                }
+            }
+            .text {
+                p {
+                    a {
+                        line-height: 22px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sec-padding {
+    padding: 60px 0;
+}
+
