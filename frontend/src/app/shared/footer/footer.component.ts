@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faTeeth, faGamepad, faFeather, faLink } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faGoogle, faTwitter, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -7,10 +7,10 @@ import { faTeeth, faGamepad, faFeather, faLink } from '@fortawesome/free-solid-s
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  faTeeth = faTeeth; 
-  faGamepad = faGamepad;  
-  faFeather = faFeather;
-  faLink = faLink; 
+  faFacebook = faFacebook; 
+  faGoogle = faGoogle;  
+  faTwitter = faTwitter;
+  faLinkedin = faLinkedin; 
 
   constructor() { }
 

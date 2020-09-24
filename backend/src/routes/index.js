@@ -6,6 +6,7 @@ import signup from './signup';
 import posts from './posts';
 import comments from './comments';
 import users from './users';
+import social from './social';
 
 const { Router } = express;
 const api = Router();
@@ -30,5 +31,6 @@ api.use('/signup/', signup);
 api.use('/posts', posts);
 api.use('/comments', comments);
 api.use('/users', users);
+api.use('/social', social);
 
 export default api;

@@ -4,6 +4,7 @@ import signup from './signup';
 import posts from './posts';
 import comments from './comments';
 import users from './users';
+import social from './social';
 
 export default {
   demo,
@@ -12,4 +13,5 @@ export default {
   posts,
   comments,
   users,
+  social,
 };

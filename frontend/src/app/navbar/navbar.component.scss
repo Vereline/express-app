@@ -13,7 +13,7 @@
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 10;
 }
 
 .hidden {
@@ -26,7 +26,10 @@
 
 a .example-icon {
   margin: 0 10px;
-  color: #ffffff;
+
+  &.white {
+    color: #ffffff;
+  }
 }
 
 mat-toolbar {

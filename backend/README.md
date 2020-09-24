@@ -43,6 +43,9 @@ export default {
   API_PORT: 3005,
   DB_URL: 'mongodb://root_user:root_pass@127.0.0.1:27017',
   JWT_KEY: 'secret',
+  GITHUB_CLIENT_ID: 'client_id',
+  GITHUB_CLIENT_SECRET: 'client_secret',
+  GITHUB_CALLBACK_URL: 'http://localhost:3500/social/github/callback',
 };
 ```
 

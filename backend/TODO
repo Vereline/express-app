@@ -136,3 +136,8 @@ https://www.youtube.com/watch?v=V95tULgGpLo
 
 // graphql protected routes
 https://auth0.com/blog/build-and-secure-a-graphql-server-with-node-js/
+
+
+// social oauth
+http://www.passportjs.org/packages/passport-github/
+https://github.com/jaredhanson/passport
