@@ -1,0 +1,33 @@
+<div *ngIf="loading">Loading...</div>
+<mat-list>
+    <mat-card>
+        <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+            <p>Update image</p>
+            <mat-form-field class="full-width-input">
+                <mat-label>Title</mat-label>
+                <input matInput *ngIf="id" placeholder="Title" formControlName="title" required value="{{post.title}}">
+                <input matInput *ngIf="!id" placeholder="Title" formControlName="title" required>
+                <mat-error>
+                  Please provide a valid email
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <mat-label>Text</mat-label>
+                <input matInput *ngIf="id" placeholder="Post Text" formControlName="postText" required value="{{post.postText}}">
+                <input matInput *ngIf="!id" placeholder="Post Text" formControlName="postText" required>
+                <mat-error>
+                  Please provide a valid email
+                </mat-error>
+            </mat-form-field>
+            <div *ngIf="id">
+                <mat-list-item>Created At {{ post.createdAt | date:'MM/dd/yyyy' }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Updated At {{ post.updatedAt | date:'MM/dd/yyyy' }}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Id {{ post._id }}</mat-list-item>
+                <button mat-raised-button color="primary">Update</button>
+            </div>
+            <button mat-raised-button color="primary" *ngIf="!id">Create</button>
+        </form>
+    </mat-card>
+</mat-list>

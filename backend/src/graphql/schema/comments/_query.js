@@ -18,6 +18,6 @@ export const queryTypes = () => [Query];
 export const queryResolvers = {
   Query: {
     comments: async () => (await Comment.find({}).populate('author').select('-__v')).map(prepare),
-    comment: async (root, { _id }) => prepare(await Comment.findbyId(_id)),
+    comment: async (root, { _id }) => prepare(await Comment.findById(_id)),
   },
 };

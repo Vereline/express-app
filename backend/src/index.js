@@ -26,6 +26,12 @@ mongoose.connect(
   },
 );
 
+// const corsOptions = {
+//   origin: 'http://localhost:4200',
+//   credentials: true,
+// };
+// app.use(cors(corsOptions));
+
 // middleware
 app.use(cors());
 

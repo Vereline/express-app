@@ -55,14 +55,15 @@ const schema = new ApolloServer({
       'editor.theme': 'dark',
     },
   },
-  context: async ({ req }) => {
+  context: async ({ req, res }) => {
+    // it should work, unfortunately, context is not passing and I cannot get a reason why, RIP
+    // https://www.apollographql.com/docs/apollo-server/security/authentication/
     let userData = null;
+    console.log('test');
     try {
       const token = req.headers.authorization.split(' ')[1];
       userData = jwt.verify(token, config.JWT_KEY);
-
       const user = getUser(userData.userId);
-
       return { user };
     } catch (error) {
       console.log('Token is missing or incorrect');

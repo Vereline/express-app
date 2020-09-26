@@ -1,1 +1,46 @@
-<p>user-page works!</p>
+<a *ngIf="isAdmin" href="http://localhost:3005/admin/">
+    <button mat-raised-button color="primary">Go to admin page</button>
+</a>
+
+<mat-list>
+    <mat-card>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <mat-form-field class="full-width-input">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" required value="{{user.email}}">
+                <mat-error>
+                  Please provide a valid email
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First Name" formControlName="firstName" required value="{{user.firstName}}">
+                <mat-error>
+                  Please provide a valid first name
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last Name" formControlName="lastName" required value="{{user.lastName}}">
+                <mat-error>
+                  Please provide a valid last name
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width-input">
+                <mat-label>Birth Date</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Birth Date" formControlName="birthDate" required required value="{{user.birthDate}}">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error>
+                    Please provide a valid birth date
+                </mat-error>
+            </mat-form-field>
+            <mat-list-item>Created At {{ user.createdAt | date:'MM/dd/yyyy' }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Updated At {{ user.updatedAt | date:'MM/dd/yyyy' }}</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Id {{ user._id }}</mat-list-item>
+            <button mat-raised-button color="primary">Update</button>
+        </form>
+    </mat-card>
+</mat-list>

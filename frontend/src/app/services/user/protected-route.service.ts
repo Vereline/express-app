@@ -9,7 +9,6 @@ export class ProtectedRouteService implements CanActivate {
   constructor(public auth: UserService, public router: Router) {}
   
   canActivate(): boolean {
-    console.log("here")
     if (!this.auth.isAuthenticated()) {
       this.router.navigate(['login']);
       return false;

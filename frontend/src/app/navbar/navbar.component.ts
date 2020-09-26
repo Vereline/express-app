@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,8 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+
+  public isLogin: Boolean;
 
   @Output()
   readonly darkModeSwitched = new EventEmitter<boolean>();
@@ -20,10 +23,20 @@ export class NavbarComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver, private userService : UserService) {}
 
   onDarkModeSwitched({ checked }: MatSlideToggleChange) {
     this.darkModeSwitched.emit(checked);
   }
 
+  ngOnInit(): void {
+    // TODO: reactive update of navbar!!!
+    this.userService.userIsAuthenticated().subscribe((isLogin : boolean) => {
+      this.isLogin = isLogin;
+    });
+  }
+
+  logout() {
+    this.userService.logoutUser();
+  }
 }

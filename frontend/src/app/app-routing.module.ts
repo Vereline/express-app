@@ -12,10 +12,15 @@ import {
   ProtectedRouteService as ProtectedRoute 
 } from './services/user/protected-route.service';
 import { paths } from './app-paths';
+import { PostPageComponent } from './posts/post-page/post-page.component';
+import { PostUpdateComponent } from './posts/post-update/post-update.component';
 
 const routes: Routes = [
   { path: paths.home, pathMatch: 'full', component: StartPageComponent },
   { path: paths.posts, component: PostsPageComponent, canActivate: [ProtectedRoute] },
+  { path: paths.post, component: PostPageComponent, canActivate: [ProtectedRoute] },
+  { path: paths.postCreate, component: PostUpdateComponent, canActivate: [ProtectedRoute] },
+  { path: paths.postUpdate, component: PostUpdateComponent, canActivate: [ProtectedRoute] },
   { path: paths.user, component: UserPageComponent, canActivate: [ProtectedRoute] },
   { path: paths.login, component: LoginPageComponent },
   { path: paths.signup, component: SignupPageComponent },

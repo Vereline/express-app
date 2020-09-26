@@ -38,6 +38,9 @@ import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import { PostUpdateComponent } from './posts/post-update/post-update.component';
+import { GraphQLModule } from "./graphql.module";
+import { MatTableModule } from '@angular/material/table';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -59,6 +62,7 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     FooterComponent,
     SliderComponent,
     InfoBlockComponent,
+    PostUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     FontAwesomeModule,
     SwiperModule,
     ReactiveFormsModule,
+    GraphQLModule,
+    MatTableModule,
   ],
   providers: [  
     MatDatepickerModule,

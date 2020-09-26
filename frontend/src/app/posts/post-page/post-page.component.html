@@ -1,1 +1,40 @@
-<p>post-page works!</p>
+<a *ngIf="isAdmin" [routerLink]="['/posts/post/update', postId]"><button mat-raised-button color="primary">Update post</button></a> 
+<div *ngIf="loading">Loading...</div>
+<mat-card class="post-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ post.title }}</mat-card-title>
+        <mat-card-subtitle><span *ngIf="post.createdAt !== null">Created at {{ post.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="post.author">By {{ post.author.firstName }} {{ post.author.lastName }}</span></mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image *ngIf="post.image" [src]="'http://localhost:3005/' + post.image" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <p>{{ post.postText }}</p>
+    </mat-card-content>
+</mat-card>
+<p>Comments:</p>
+<div *ngFor="let comment of post.comments">
+    <mat-card class="post-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-subtitle><span *ngIf="comment.createdAt !== null">Created at {{ comment.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="comment.author !== null">By {{ comment.author.firstName }} {{ comment.author.lastName }}</span></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{ comment.text }}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment()">
+            <p>Add your comment</p>
+            <mat-form-field class="full-width-input">
+                <mat-label>Your text</mat-label>
+                <input matInput placeholder="Text" formControlName="text" required>
+                <mat-error>
+                  Please provide a valid text
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary">Publish</button>
+        </form>
+    </mat-card-content>
+</mat-card>
