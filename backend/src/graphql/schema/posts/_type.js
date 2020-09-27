@@ -6,7 +6,8 @@ const Post = gql`
   firstName: String
   lastName: String
   email: String
-  isAdmin: String
+  photo: String
+  isAdmin: Boolean
 }
 
  type Post {

@@ -12,7 +12,6 @@ const Input = gql`
       title: String!
       postText: String!
       image: File
-      author: String!
    } 
 `;
 

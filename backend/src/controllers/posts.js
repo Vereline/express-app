@@ -1,6 +1,12 @@
 import mongoose from 'mongoose';
 import Post from '../models/post';
+import User from '../models/user';
 
+
+async function getUser(userId) {
+  const user = await User.findById(userId);
+  return user;
+}
 
 export default {
   postsList(req, res, next) {
@@ -62,16 +68,19 @@ export default {
       image = req.file.path;
     }
 
+    const author = getUser(req.body.author);
+
     const post = new Post({
       _id: new mongoose.Types.ObjectId(),
       // createdAt: new Date(Date.now()),
       // updatedAt: new Date(Date.now()),
       title: req.body.title,
       postText: req.body.postText,
-      image,
-      // author: req.body.authorId,
+      image: `http://localhost:3005/${image}`,
+      author: req.body.author,
     });
     // post.save().exec();
+    author.posts.push(post);
     post.save()
       .then((result) => {
         console.log(result);
@@ -88,14 +97,14 @@ export default {
   },
   postsUpdate(req, res, next) {
     const postId = req.params.id;
-    let updateData = {
+    const updateData = {
       updatedAt: new Date(Date.now()),
       // author: req.body.authorId,
       ...req.body,
     };
 
     if (req.file) {
-      updateData.image = req.file.path;
+      updateData.image = `http://localhost:3005/${req.file.path}`;
     }
 
     Post.update({ _id: postId }, {

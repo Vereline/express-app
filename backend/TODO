@@ -84,6 +84,9 @@ https://zgadzaj.com/development/docker/docker-compose/containers/mongodb
 // AdminBro
 https://adminbro.com/docs.html
 https://adminbro.com/module-admin-bro-expressjs.html
+https://softwarebrothers.co/blog/how-to-add-role-based-admin-panel-to-node-js-app/
+https://medium.com/swlh/node-js-authentication-and-authorization-with-admin-bro-a88c0922cc7d
+https://medium.com/javascript-in-plain-english/node-js-creating-admin-pannel-with-admin-bro-41725198a81c
 
 // Admin Mongo
 https://docs.mongodb.com/manual/introduction/
@@ -132,15 +135,22 @@ https://masteringjs.io/tutorials/express/websockets
 // Graphql file upload example
 https://github.com/jaydenseric/apollo-upload-examples
 https://www.youtube.com/watch?v=V95tULgGpLo
+https://gist.github.com/eveporcello/12c0f5070fd1c0bc3d9f02906f7743a8
 
 
 // graphql protected routes
 https://auth0.com/blog/build-and-secure-a-graphql-server-with-node-js/
 
 
+// graphql IMAGE UPLOAD (MEAN)
+https://morioh.com/p/b7558204c9e3
+
+
 // social oauth
 http://www.passportjs.org/packages/passport-github/
 https://github.com/jaredhanson/passport
+https://github.com/nax3t/angular-express-passport-tutorial/blob/master/facebook.md
+https://dzone.com/articles/implementing-oauth2-social-login-with-facebook-par-1
 
 
 // jwt verify and refresh???
@@ -150,3 +160,39 @@ https://livecodestream.dev/post/2020-08-11-a-practical-guide-to-jwt-authenticati
 
 // Understanding Node Error [ERR_HTTP_HEADERS_SENT]
 https://www.codementor.io/@oparaprosper79/understanding-node-error-err_http_headers_sent-117mpk82z8
+
+
+//socket io
+https://www.youtube.com/watch?v=tHbCkikFfDE&ab_channel=TraversyMedia
+https://www.youtube.com/watch?v=jD7FnbI76Hg&ab_channel=TraversyMedia
+https://github.com/bradtraversy/chatcord
+https://github.com/chandransuresh/MEAN-Socket-IO
+
+
+// mean GraphQL
+https://developer.okta.com/blog/2018/11/30/web-app-with-express-angular-graphql
+https://morioh.com/p/4437b0da28c1
+https://github.com/didinj/node-express-angular-mongodb-graphql
+
+
+// webrtc
+https://medium.com/@supunlakmal61/webrtc-video-call-and-file-transfer-b6e7a9376ec3
+
+
+// websockets
+https://github.com/BinamB/Angular-MongoDB-Websockets
+https://www.youtube.com/watch?v=-s8Y2JS2Vp0&ab_channel=SureshC
+https://github.com/chandransuresh/MEAN-Socket-IO
+
+
+// websockets vs Socket.io
+https://www.educba.com/websocket-vs-socket-io/
+https://habr.com/ru/post/498996/
+
+
+// twitter oauth
+https://medium.com/better-programming/how-to-add-twitter-sign-in-to-your-node-js-back-end-with-angular-app-as-the-front-end-d90213f95703
+
+
+// github oauth ???
+https://coderwall.com/p/0qa_kw/create-a-social-login-button-any-oauth-provider-using-angular-js

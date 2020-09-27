@@ -1,8 +1,6 @@
-import express from 'express';
-
 import AdminBro from 'admin-bro';
 import AdminBroExpressjs from 'admin-bro-expressjs';
-
+import bcrypt from 'bcrypt';
 import Post from '../models/post';
 import Comment from '../models/comment';
 import User from '../models/user';
@@ -15,18 +13,19 @@ const adminBro = new AdminBro({
   rootPath: '/admin',
 });
 
-const router = express.Router();
-
-router.use((req, res, next) => {
-  if (req.session && req.session.admin) {
-    req.session.adminUser = req.session.admin;
-    next();
-  } else {
-    res.redirect(adminBro.options.loginPath);
-  }
+const adminRouter = AdminBroExpressjs.buildAuthenticatedRouter(adminBro, {
+  authenticate: async (email, password) => {
+    const user = await User.findOne({ email });
+    if (user) {
+      const checkHash = await bcrypt.compare(password, user.password);
+      if (checkHash) {
+        return user;
+      }
+    }
+    return false;
+  },
+  cookiePassword: 'session Key',
 });
-
-const adminRouter = AdminBroExpressjs.buildRouter(adminBro);
 
 export {
   adminRouter,

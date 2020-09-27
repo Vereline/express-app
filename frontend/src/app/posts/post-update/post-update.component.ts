@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
 import { UserService } from 'src/app/services/user/user.service';
@@ -13,15 +13,35 @@ import gql from "graphql-tag";
 export class PostUpdateComponent implements OnInit {
 
   public isAdmin: Boolean;
+  public formError: Boolean;
+  public formSubmitAttempt: Boolean;
   id: number;
   post: any = {};
   loading = false;
   error: string;
   postForm: FormGroup;
 
+  createPost =  gql`mutation createBlog($postData: PostInput) {
+      createPost(postData: $postData) {
+        postText
+        title
+        _id
+    }
+  }`
+
+  updatePost = gql`
+    mutation updateBlog($id: String!, $postData: PostInput) {
+      updatePost(_id:$id,  postData: $postData) {
+        postText
+        title
+        _id
+    }
+  }
+  `
+
   constructor(private userService : UserService, private activateRoute: ActivatedRoute, private apollo: Apollo,
-    private fb: FormBuilder){
-    this.id = activateRoute.snapshot.params['id'];
+    private fb: FormBuilder,private router: Router){
+    this.id = this.activateRoute.snapshot.params['id'];
   }
 
   ngOnInit(): void {
@@ -45,15 +65,13 @@ export class PostUpdateComponent implements OnInit {
                 _id,
                 postText,
                 title,
-                    author {
+                author {
                   _id,
                   firstName,
                   lastName,
                   email,
-                  isAdmin
-                },
-                comments {
-                  _id
+                  isAdmin,
+                  photo
                 },
                 createdAt,
                 updatedAt,
@@ -78,6 +96,50 @@ export class PostUpdateComponent implements OnInit {
   }
 
   onSubmit() {
-    
+    this.formError = false;
+    this.formSubmitAttempt = false;
+    if (this.postForm.valid) {
+      try {
+        const title = this.postForm.get('title').value;
+        const postText = this.postForm.get('postText').value;
+        if (this.id) {
+          this.apollo.mutate({
+            mutation: this.updatePost,
+            variables: {
+              id: this.id,
+              postData: {
+                title: title,
+                postText: postText
+              }
+            }
+          }).subscribe(({ data }) => {
+            this.router.navigate(['/posts/post', data['updatePost']['_id']]);
+          },(error) => {
+            console.log('There was an error sending the query', error);
+          });
+        } else {
+          this.apollo.mutate({
+            mutation: this.createPost,
+            variables: {
+              postData: {
+                title: title,
+                postText: postText
+              }
+            }
+          }).subscribe(({ data }) => {
+            this.router.navigate(['/posts/post', data['createPost']['_id']]);
+          },(error) => {
+            console.log('There was an error sending the query', error);
+          });
+        }
+
+
+      } catch (err) {
+        this.formError = true;
+        console.log(err)
+      }
+    } else {
+      this.formSubmitAttempt = true;
+    }
   }
 }

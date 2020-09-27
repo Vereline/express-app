@@ -51,9 +51,11 @@
       </mat-form-field>
       <button mat-raised-button color="primary">Signup</button>
     </form>
-    <a routerLink="/github">
-      <fa-icon [icon]="faGithub"></fa-icon>
-      <span>Github login</span>
+    <a href="http://localhost:3005/api/social/github" target="_blank">
+      <button mat-raised-button color="light">
+        <fa-icon [icon]="faGithub"></fa-icon>
+        <span>Github login</span>
+      </button>
     </a>
   </mat-card-content>
 </mat-card>

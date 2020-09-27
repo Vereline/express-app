@@ -6,13 +6,13 @@ const Comment = gql`
   firstName: String
   lastName: String
   email: String
-  isAdmin: String
+  photo: String
+  isAdmin: Boolean
  }
 
  type Comment {
    _id: String!
    text: String!
-   post: String
    author: CommentAuthor
    createdAt: String!
    updatedAt: String!

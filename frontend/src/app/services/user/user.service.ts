@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import decode from 'jwt-decode';
 import { User } from './user.model';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -12,6 +12,10 @@ import { Router } from '@angular/router';
 export class UserService {
 
   readonly rootUrl = 'http://localhost:3005';
+  private isLoginUser: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private isAdminUser: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoginUser$: Observable<boolean> = this.isLoginUser.asObservable();
+  isAdminUser$: Observable<boolean> = this.isAdminUser.asObservable();
 
   constructor(private http: HttpClient, public jwtHelper: JwtHelperService, private router: Router) { }
 
@@ -28,18 +32,17 @@ export class UserService {
   }
 
   userAuthentication(email, password) {
-    // console.log(email, password)
     var data = { email, password };
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.rootUrl + '/api/login', data, { headers: reqHeader });
   }
 
   public userIsAuthenticated(): Observable<boolean> {
-    return of(this.isAuthenticated());
+    return this.isLoginUser.asObservable();
   }
 
   public userIsAdmin(): Observable<boolean> {
-    return of(this.isAdmin());
+    return this.isAdminUser.asObservable();
   }
 
   public isAuthenticated(): boolean {
@@ -61,12 +64,16 @@ export class UserService {
   getUserData() {
     const token = localStorage.getItem('token');
     const tokenPayload = decode(token);
+    this.isLoginUser.next(this.isAuthenticated());
+    this.isAdminUser.next(this.isAdmin());
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'JWT ' + token });
     return this.http.get(this.rootUrl +'/api/users/' + tokenPayload.userId, {headers: reqHeader});
   }
 
   logoutUser() {
     localStorage.clear();
+    this.isLoginUser.next(false);
+    this.isAdminUser.next(false);
     this.router.navigate(['/login']);
   }
 }

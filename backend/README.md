@@ -45,7 +45,7 @@ export default {
   JWT_KEY: 'secret',
   GITHUB_CLIENT_ID: 'client_id',
   GITHUB_CLIENT_SECRET: 'client_secret',
-  GITHUB_CALLBACK_URL: 'http://localhost:3500/social/github/callback',
+  GITHUB_CALLBACK_URL: 'http://localhost:3005/social/github/callback',
 };
 ```
 

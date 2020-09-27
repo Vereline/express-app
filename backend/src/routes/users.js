@@ -4,7 +4,7 @@ import checkAuthMiddleware from '../middlewares';
 
 const { Router } = express;
 const { users } = usersController;
-const { checkAuth } = checkAuthMiddleware;
+const { upload, checkAuth } = checkAuthMiddleware;
 
 const api = Router();
 
@@ -106,7 +106,7 @@ api.get('/:id', checkAuth.checkAuth, users.getUserDetail);
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.patch('/:id', checkAuth.checkAuth, users.updateUser);
+api.patch('/:id', checkAuth.checkAuth, upload.single('image'), users.updateUser);
 
 /**
  * @swagger

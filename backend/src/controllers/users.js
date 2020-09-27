@@ -24,6 +24,11 @@ export default {
       updatedAt: new Date(Date.now()),
       ...req.body,
     };
+
+    if (req.file) {
+      updateData.photo = `http://localhost:3005/${req.file.path}`;
+    }
+
     User.update({ _id: userId }, {
       $set: {
         ...updateData,

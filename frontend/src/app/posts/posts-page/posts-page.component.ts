@@ -32,7 +32,8 @@ export class PostsPageComponent implements OnInit {
                 firstName,
                 lastName,
                 email,
-                isAdmin
+                isAdmin,
+                photo
               },
               comments {
                 _id

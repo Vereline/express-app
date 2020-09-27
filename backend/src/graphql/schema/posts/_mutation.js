@@ -19,39 +19,41 @@ export const mutationResolvers = {
   Mutation: {
     createPost: async (root, args, context, info) => {
       // TODO: before process file correctly
-      if (context.user === null) {
+      const user = await context.user;
+      if (user === null) {
         throw new AuthenticationError('User is not authentiated');
       }
-      if (context.user.isAdmin === false) {
+      if (user.isAdmin === false) {
         throw new ForbiddenError('Only admins are allowed to perform this action');
       }
 
-      const res = await Post.create(...args);
-      return prepare(await Post.findOne({ _id: res._id })); // return res ???
+      const res = await Post.create({ author: user, ...args.postData });
+      user.posts.push(res);
+      return prepare(await Post.findOne({ _id: res._id })); 
     },
     updatePost: async (root, args, context, info) => {
       // TODO: before process file correctly
-
-      if (context.user === null) {
+      const user = await context.user;
+      if (user === null) {
         throw new AuthenticationError('User is not authentiated');
       }
 
-      if (context.user.isAdmin === false) {
+      if (user.isAdmin === false) {
         throw new ForbiddenError('Only admins are allowed to perform this action');
       }
 
       const postId = args._id;
       const updateData = {
         updatedAt: new Date(Date.now()),
-        ...args,
+        ...args.postData,
       };
 
       const res = await Post.update({ _id: postId }, {
         $set: {
           ...updateData,
         },
-      });
-      return prepare(res);
+      }).exec();
+      return prepare(await Post.findById(postId));
     },
   },
 };

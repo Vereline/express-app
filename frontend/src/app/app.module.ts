@@ -41,6 +41,7 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { PostUpdateComponent } from './posts/post-update/post-update.component';
 import { GraphQLModule } from "./graphql.module";
 import { MatTableModule } from '@angular/material/table';
+import { WebSocketService } from './services/web-socket.service';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -97,7 +98,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
       useValue: DEFAULT_SWIPER_CONFIG
     },
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService 
+    JwtHelperService, 
+    WebSocketService, 
   ],
   bootstrap: [AppComponent]
 })

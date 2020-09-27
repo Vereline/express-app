@@ -20,26 +20,36 @@
 }
 
 
- query getPost($id: String!) {
-  post(_id: $id) {
-    _id,
-    postText,
-    title,
-        author {
+  query getPost($id: String!) {
+    post(_id: $id) {
       _id,
-      firstName,
-      lastName,
-      email,
-      isAdmin
-    },
-    comments {
-      _id
-    },
-    createdAt,
-    updatedAt,
-    image
+      postText,
+      title,
+      author {
+        _id,
+        firstName,
+        lastName,
+        email,
+        isAdmin
+      },
+      comments {
+        _id,
+        text,
+        author {
+          _id,
+          firstName,
+          lastName,
+          email,
+          isAdmin
+        },
+        createdAt,
+        updatedAt,
+      },
+      createdAt,
+      updatedAt,
+      image
+    }
   }
-}
 {
   "id": "5f0e23de90c02b6854699725"
 }
@@ -64,15 +74,17 @@ mutation createBlog($postData: PostInput) {
 }
 
 
-
-
-mutation updateBlog($id: String!, $postData: PostInput) {mutation createComment($commentData: CommentInput) {
+mutation createComment($commentData: CommentInput) {
       createComment(commentData: $commentData) {
 				text
     		post
     		author
     }
 }
+
+
+
+mutation updateBlog($id: String!, $postData: PostInput) {
       updatePost(_id:$id,  postData: $postData) {
 				postText
     		title

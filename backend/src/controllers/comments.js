@@ -96,13 +96,13 @@ export default {
           author: req.body.author,
           post: req.body.post,
         });
-
+        post.comments.push(comment);
         return comment.save();
       })
       .then((result) => {
         console.log(result);
         res.status(201).json({
-          post: result,
+          comment: result,
         });
       })
       .catch((err) => {

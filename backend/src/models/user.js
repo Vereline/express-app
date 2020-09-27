@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 
 const userSchema = mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
+  _id: { type: mongoose.Schema.Types.ObjectId, required: true, auto: true },
+  githubId: { type: mongoose.Schema.Types.String, required: false },
   email: {
     type: String,
     required: true,
@@ -14,6 +15,7 @@ const userSchema = mongoose.Schema({
   photo: { type: mongoose.Schema.Types.String, required: false },
   birthDate: { type: mongoose.Schema.Types.Date, required: true },
   isAdmin: { type: mongoose.Schema.Types.Boolean, required: true, default: false },
+  posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
   createdAt: { type: mongoose.Schema.Types.Date, required: true, default: new Date(Date.now()) },
   updatedAt: { type: mongoose.Schema.Types.Date, required: true, default: new Date(Date.now()) },
   //   deletedAt: mongoose.Schema.Types.Date, // right now deletion will be real removing item from the database

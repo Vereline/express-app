@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { UserService } from '../services/user/user.service';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,8 @@ import { UserService } from '../services/user/user.service';
 export class NavbarComponent {
 
   public isLogin: Boolean;
+
+  subscription: Subscription;
 
   @Output()
   readonly darkModeSwitched = new EventEmitter<boolean>();
@@ -30,10 +33,8 @@ export class NavbarComponent {
   }
 
   ngOnInit(): void {
-    // TODO: reactive update of navbar!!!
-    this.userService.userIsAuthenticated().subscribe((isLogin : boolean) => {
-      this.isLogin = isLogin;
-    });
+    this.subscription = this.userService.isLoginUser$
+    .subscribe(isLoggedIn => this.isLogin = isLoggedIn);
   }
 
   logout() {

@@ -1,5 +1,6 @@
 import { gql, AuthenticationError } from 'apollo-server-express';
 import Comment from '../../../models/comment';
+import Post from '../../../models/post';
 
 const prepare = (o) => {
   o._id = o._id.toString();
@@ -16,24 +17,27 @@ const Mutation = gql`
 export const mutationTypes = () => [Mutation];
 
 export const mutationResolvers = {
-  Mutation: { // ?????
+  Mutation: { // TODO also test this flow?????
     createComment: async (root, args, context, info) => {
-      if (context.user === null) {
+      const user = await context.user;
+      if (user === null) {
         throw new AuthenticationError('User is not authentiated');
       }
-
-      const res = await Comment.create(...args);
-      return prepare(res);
+      const post = await Post.findById(args.commentData.post)
+      const res = await Comment.create(...args.commentData, post);
+      post.comments.push(res);
+      return prepare(await Comment.findOne({ _id: res._id }));
     },
     updateComment: async (root, args, context, info) => {
-      if (context.user === null) {
+      const user = await context.user;
+      if (user === null) {
         throw new AuthenticationError('User is not authentiated');
       }
 
       const commentId = args._id;
       const updateData = {
         updatedAt: new Date(Date.now()),
-        ...args,
+        ...args.commentData,
       };
 
       const res = await Comment.update({ _id: commentId }, {

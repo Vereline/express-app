@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { UserService } from 'src/app/services/user/user.service';
 import gql from "graphql-tag";
+import { WebSocketService } from 'src/app/services/web-socket.service';
 
 @Component({
   selector: 'app-post-page',
@@ -19,9 +20,14 @@ export class PostPageComponent implements OnInit {
   error: string;
   commentForm: FormGroup;
 
+  userName: string;
+  message: string;
+  output: any[] = [];
+  feedback: string;
+
   constructor(private userService : UserService, private activateRoute: ActivatedRoute, private apollo: Apollo,
-     private fb: FormBuilder){
-    this.postId = activateRoute.snapshot.params['id'];
+     private fb: FormBuilder, private webSocketService: WebSocketService){
+    this.postId = this.activateRoute.snapshot.params['id'];
   }
 
   ngOnInit(): void {
@@ -38,26 +44,38 @@ export class PostPageComponent implements OnInit {
     this.apollo
       .query<any>({
         query: gql`
-          query getPost($id: String!) {
-            post(_id: $id) {
+        query getPost($id: String!) {
+          post(_id: $id) {
+            _id,
+            postText,
+            title,
+            author {
               _id,
-              postText,
-              title,
-                  author {
+              firstName,
+              lastName,
+              email,
+              isAdmin,
+              photo
+            },
+            comments {
+              _id,
+              text,
+              author {
                 _id,
                 firstName,
                 lastName,
                 email,
-                isAdmin
-              },
-              comments {
-                _id
+                isAdmin,
+                photo
               },
               createdAt,
               updatedAt,
-              image
-            }
+            },
+            createdAt,
+            updatedAt,
+            image
           }
+        }
         `,
         variables: {
           id: this.postId
@@ -72,10 +90,35 @@ export class PostPageComponent implements OnInit {
         }
         this.loading = loading;
       });
+
+      this.webSocketService.listen('typing').subscribe((data) => this.updateFeedback(data));
+      this.webSocketService.listen('chat').subscribe((data) => this.updateMessage(data));  
   }
 
   onSubmitComment() {
 
   }
 
+  messageTyping(): void {
+    this.webSocketService.emit('typing', this.userName);    
+  }
+
+  sendMessage(): void {
+    this.webSocketService.emit('chat', {
+      message: this.message,
+      handle: this.userName
+    });
+    this.message = "";    
+  }
+
+  updateMessage(data:any) {
+    this.feedback = '';
+    if(!!!data) return;
+    console.log(`${data.handle} : ${data.message}`);
+    this.output.push(data);
+  }
+
+  updateFeedback(data: any){
+    this.feedback = `${data} is typing a message`;
+  }
 }

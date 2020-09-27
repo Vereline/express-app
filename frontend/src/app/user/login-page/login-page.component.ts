@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import {  HttpErrorResponse } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
@@ -17,6 +17,7 @@ export class LoginPageComponent implements OnInit {
   public isLoginError: boolean;
   private formSubmitAttempt: boolean;
   private returnUrl: string;
+  private token: string;
 
   constructor(private userService : UserService, private router: Router, private fb: FormBuilder,
     private route: ActivatedRoute) { 
@@ -25,6 +26,14 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/user';
+    this.route.queryParams.subscribe(params => {
+        this.token = params['token'];
+    });
+
+    if (this.token) {
+      localStorage.setItem("token", this.token);
+      this.router.navigate(['/user']);
+    }
 
     this.loginForm = this.fb.group({
       email: ['', Validators.email],
@@ -42,7 +51,7 @@ export class LoginPageComponent implements OnInit {
         this.userService.userAuthentication(email, password).subscribe((data : any) => {
           localStorage.setItem("token", data["token"]);
           this.router.navigate([this.returnUrl]);
-        }, (err : HttpErrorResponse)=> {
+        }, (err : HttpErrorResponse) => {
           this.isLoginError = true;
           this.formSubmitAttempt = true;
         });

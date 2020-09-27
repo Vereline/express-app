@@ -8,7 +8,7 @@
                 <input matInput *ngIf="id" placeholder="Title" formControlName="title" required value="{{post.title}}">
                 <input matInput *ngIf="!id" placeholder="Title" formControlName="title" required>
                 <mat-error>
-                  Please provide a valid email
+                  Please provide a valid title
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width-input">
@@ -16,7 +16,7 @@
                 <input matInput *ngIf="id" placeholder="Post Text" formControlName="postText" required value="{{post.postText}}">
                 <input matInput *ngIf="!id" placeholder="Post Text" formControlName="postText" required>
                 <mat-error>
-                  Please provide a valid email
+                  Please provide a valid text
                 </mat-error>
             </mat-form-field>
             <div *ngIf="id">

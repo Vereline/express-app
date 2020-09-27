@@ -7,7 +7,7 @@
             <mat-card-title>{{ post.title }}</mat-card-title>
             <mat-card-subtitle><span *ngIf="post.createdAt !== null">Created at {{ post.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="post.author !== null">By {{ post.author.firstName }} {{ post.author.lastName }}</span></mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image *ngIf="post.image !== null" [src]="'http://localhost:3005/' + post.image" alt="Photo of a Shiba Inu">
+        <img mat-card-image *ngIf="post.image !== null" [src]="post.image" alt="Post image">
         <mat-card-content>
             <p>{{ post.postText | slice:0:150 }}<span *ngIf="post.postText.length > 150">...</span></p>
         </mat-card-content>
