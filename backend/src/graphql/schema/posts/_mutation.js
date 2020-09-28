@@ -1,5 +1,7 @@
 import { gql, AuthenticationError, ForbiddenError } from 'apollo-server-express';
 import Post from '../../../models/post';
+// const path = require('path');
+// const { createWriteStream } = require('fs');
 
 const prepare = (o) => {
   o._id = o._id.toString();
@@ -29,10 +31,16 @@ export const mutationResolvers = {
 
       const res = await Post.create({ author: user, ...args.postData });
       user.posts.push(res);
-      return prepare(await Post.findOne({ _id: res._id })); 
+      user.save();
+      return prepare(await Post.findOne({ _id: res._id }));
     },
     updatePost: async (root, args, context, info) => {
-      // TODO: before process file correctly
+      // const { createReadStream, filename, mimetype, encoding } = context.image;
+      // console.log(path.join(__dirname, '../../../../uploads/', new Date().toISOString().replace(/:/g, '-') + filename));
+      // const newFilename = new Date().toISOString().replace(/:/g, '-') + filename;
+      // const newFilePath = path.join(__dirname, '../../../../uploads/', newFilename);
+      // const newFileUrl = `http://localhost:3005/uploads/${newFilename}`;
+
       const user = await context.user;
       if (user === null) {
         throw new AuthenticationError('User is not authentiated');
@@ -45,7 +53,8 @@ export const mutationResolvers = {
       const postId = args._id;
       const updateData = {
         updatedAt: new Date(Date.now()),
-        ...args.postData,
+        title: args.postData.title,
+        postText: args.postData.postText,
       };
 
       const res = await Post.update({ _id: postId }, {

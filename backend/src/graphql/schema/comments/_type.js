@@ -13,6 +13,7 @@ const Comment = gql`
  type Comment {
    _id: String!
    text: String!
+   post: Post
    author: CommentAuthor
    createdAt: String!
    updatedAt: String!

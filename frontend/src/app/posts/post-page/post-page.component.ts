@@ -14,16 +14,40 @@ import { WebSocketService } from 'src/app/services/web-socket.service';
 export class PostPageComponent implements OnInit {
   
   public isAdmin: Boolean;
-  postId: number;
+  public formError: Boolean;
+  public formSubmitAttempt: Boolean;
+  postId: string;
+  userId: string;
   post: any = {};
+  comments: any[] = [];
   loading = false;
   error: string;
   commentForm: FormGroup;
 
-  userName: string;
-  message: string;
-  output: any[] = [];
+  firstName: string;
+  lastName: string;
   feedback: string;
+
+  createComment =  gql`mutation createBlogComment($commentData: CommentInput) {
+      createComment(commentData: $commentData) {
+        _id,
+        text,
+        post {
+          _id
+        },
+        author {
+          _id,
+          firstName,
+          lastName,
+          email,
+          isAdmin,
+          photo
+        },
+        createdAt,
+        updatedAt,
+    }
+  }`
+
 
   constructor(private userService : UserService, private activateRoute: ActivatedRoute, private apollo: Apollo,
      private fb: FormBuilder, private webSocketService: WebSocketService){
@@ -84,6 +108,9 @@ export class PostPageComponent implements OnInit {
       .subscribe(({ data, loading }) => {
         if (data.post) {
           this.post = data.post;
+          if (this.post.comments){
+            this.comments = this.post.comments; 
+          }
         }
         else {
           this.error = "Post does not exist";
@@ -91,34 +118,58 @@ export class PostPageComponent implements OnInit {
         this.loading = loading;
       });
 
+      this.firstName = localStorage.getItem("firstName");
+      this.lastName = localStorage.getItem("lastName");
+      this.userId = localStorage.getItem("id");
+
       this.webSocketService.listen('typing').subscribe((data) => this.updateFeedback(data));
-      this.webSocketService.listen('chat').subscribe((data) => this.updateMessage(data));  
+      this.webSocketService.listen('spreadComment').subscribe((data) => this.addComment(data));
   }
 
   onSubmitComment() {
-
+    this.formError = false;
+    this.formSubmitAttempt = false;
+    if (this.commentForm.valid) {
+      try {
+        const text = this.commentForm.get('text').value;
+        this.apollo.mutate({
+          mutation: this.createComment,
+          variables: {
+            commentData: {
+              text: text,
+              post: this.postId,
+              author: this.userId,
+            }
+          }
+        }).subscribe(({ data }) => {
+          // this.comments.push(data['createComment'])
+          console.log(data['createComment']);
+          this.webSocketService.emit('sendComment', data);  
+        },(error) => {
+          console.log('There was an error sending the query', error);
+        });
+      } catch (err) {
+        this.formError = true;
+        console.log(err)
+      }
+    }
   }
 
   messageTyping(): void {
-    this.webSocketService.emit('typing', this.userName);    
-  }
-
-  sendMessage(): void {
-    this.webSocketService.emit('chat', {
-      message: this.message,
-      handle: this.userName
-    });
-    this.message = "";    
-  }
-
-  updateMessage(data:any) {
-    this.feedback = '';
-    if(!!!data) return;
-    console.log(`${data.handle} : ${data.message}`);
-    this.output.push(data);
+    this.webSocketService.emit('typing', `${this.firstName} ${this.lastName}`);    
   }
 
   updateFeedback(data: any){
-    this.feedback = `${data} is typing a message`;
+    this.feedback = `${data} is typing a comment`;
+  }
+
+  addComment(data: any) {
+    // console.log(data);
+    this.comments.push(data['createComment']);
+    this.feedback = '';
+  }
+
+  getDetaultPhoto() {
+    return 'assets/images/user-default.png';
   }
 }

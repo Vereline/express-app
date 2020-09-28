@@ -1,57 +1,47 @@
-<a *ngIf="isAdmin" [routerLink]="['/posts/post/update', postId]"><button mat-raised-button color="primary">Update post</button></a> 
-<div *ngIf="loading">Loading...</div>
+<a *ngIf="isAdmin" [routerLink]="['/posts/post/update', postId]"><button mat-raised-button color="primary">{{'post.updateButton' | translate }}</button></a> 
+<div *ngIf="loading">{{'post.loading' | translate }}</div>
 <mat-card class="post-card">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{ post.title }}</mat-card-title>
-        <mat-card-subtitle><span *ngIf="post.createdAt !== null">Created at {{ post.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="post.author">By {{ post.author.firstName }} {{ post.author.lastName }}</span></mat-card-subtitle>
+        <img *ngIf="post.author" [src]="post.author.photo || getDetaultPhoto()" alt="User image">
+        <mat-card-subtitle><span *ngIf="post.createdAt !== null">{{'post.createdAt' | translate }}{{ post.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="post.author">{{'post.createdBy' | translate }}{{ post.author.firstName }} {{ post.author.lastName }}</span></mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image *ngIf="post.image" [src]="post.image" alt="Post image">
     <mat-card-content>
-        <p>{{ post.postText }}</p>
+        <!-- <p>{{ post.postText }}</p> -->
+        <quill-view [content]="post.postText" [preserveWhitespace]="true" [sanitize]="true" format="html"></quill-view>
     </mat-card-content>
 </mat-card>
-<p>Comments:</p>
-<div *ngFor="let comment of post.comments">
+<h3>{{'post.comments' | translate }}</h3>
+<div *ngFor="let comment of comments">
     <mat-card class="post-card">
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-subtitle><span *ngIf="comment.createdAt !== null">Created at {{ comment.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="comment.author !== null">By {{ comment.author.firstName }} {{ comment.author.lastName }}</span></mat-card-subtitle>
+            <img *ngIf="comment.author !== null" [src]="comment.author.photo || getDetaultPhoto()" alt="User image">
+            <mat-card-subtitle><span *ngIf="comment.createdAt !== null">{{'post.createdAtComment' | translate }}{{ comment.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="comment.author !== null">{{'post.createdByComment' | translate }}{{ comment.author.firstName }} {{ comment.author.lastName }}</span></mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <p>{{ comment.text }}</p>
         </mat-card-content>
     </mat-card>
 </div>
-<div *ngIf="!post.comments">
-    <p>Unfortunately, here are no comments. Be the first one to comment!</p>
+<div *ngIf="!comments || !comments.length">
+    <p>{{'post.noComments' | translate }}</p>
 </div>
+<div id="feedback"><p>{{feedback}}</p></div>
 <mat-card>
     <mat-card-content>
         <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment()">
-            <p>Add your comment</p>
+            <p>{{'post.commentForm.title' | translate }}</p>
             <mat-form-field class="full-width-input">
-                <mat-label>Your text</mat-label>
-                <input matInput placeholder="Text" formControlName="text" required>
+                <mat-label>{{'post.commentForm.label' | translate }}</mat-label>
+                <input matInput placeholder="Text" formControlName="text" required (keypress)="messageTyping()">
                 <mat-error>
-                  Please provide a valid text
+                    {{'post.commentForm.errorText' | translate }}
                 </mat-error>
             </mat-form-field>
-            <button mat-raised-button color="primary">Publish</button>
+            <button mat-raised-button color="primary">{{'post.commentForm.button' | translate }}</button>
         </form>
     </mat-card-content>
 </mat-card>
-
-<div id="chat-applicaton">
-    <h2>Chat Application - Angular client</h2>
-    <div id="chat-window">
-      <div id="output" *ngFor="let data of output">
-          <p><strong>{{data.handle}} : </strong>{{data.message}}</p>
-      </div>
-      <div id="feedback"><p>{{feedback}}</p></div>
-    </div>
-    <input id="handle" type="text" [(ngModel)]="userName" placeholder="Handle" />
-    <input id="message" type="text" [(ngModel)]="message" placeholder="Message" autocomplete="off"
-      (keypress)="messageTyping()" />
-    <button type="button" id="send" style="cursor: pointer;" (click)="sendMessage()">Send</button>
-</div>

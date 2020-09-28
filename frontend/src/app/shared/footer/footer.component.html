@@ -3,19 +3,19 @@
         <div class="footer-wrapper" fxLayout="row wrap" fxLayoutAlign="space-between start">
             <div fxFlex="100" fxFlex.gt-sm="23" fxFlex.sm="50" ngClass.xs="mt-2" class="footer-widget links-widget links-widget-pac">
                 <div class="title">
-                    <h5>Address</h5>
+                    <h5>{{'footer.address' | translate }}</h5>
                 </div>
                 <div class="row">
-                    <p>Here is my address.</p>
+                    <p>{{'footer.addressText' | translate }}</p>
                 </div>
             </div>
             <div fxFlex="100" fxFlex.gt-sm="30" fxFlex.sm="50" class="footer-widget about-widget"><a class="logo" href="index.html"><h2>Express-app</h2></a>
                 <div class="title">
-                    <h5>Social networks</h5>
+                    <h5>{{'footer.social' | translate }}</h5>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <p>I didn't find brand icons, so here are some cusom ones.</p>
-                </div>
+                </div> -->
                 <ul fxLayout="row" fxLayoutAlign="center center" class="social list-inline">
                     <!-- TODO: add normal social icons, right now I cannot find them in the font awesome library -->
                     <li><a href="#"><fa-icon [icon]="faLinkedin"></fa-icon></a></li>
@@ -30,7 +30,7 @@
             </div>
             <div fxFlex="100" fxFlex.gt-sm="23" fxFlex.sm="50" ngClass.sm="mt-2" ngClass.xs="mt-2" class="footer-widget subscribe-widget">
                 <div class="title">
-                    <h5>Contact Me</h5>
+                    <h5>{{'footer.contact' | translate }}</h5>
                 </div>
                 <div class="link"><a href="mailto:viktoryia.stanko@gmail.com">viktoryia.stanko@gmail.com</a> </div>
             </div>

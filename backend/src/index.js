@@ -7,9 +7,8 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import mongoose from 'mongoose';
 import fs from 'fs';
-import socket from 'socket.io';
 import passport from 'passport';
-
+import socket from 'socket.io';
 
 import config from './config';
 import routes from './routes';
@@ -112,25 +111,23 @@ app.server.listen(config.port);
 
 console.log(`Started on 'http://localhost:${app.server.address().port}'`);
 
-
 const io = socket(app.server);
-// Listen for new connection and print a message in console
 io.on('connection', (socketServer) => {
   console.log(`New connection ${socketServer.id}`);
 
-  // Listening for chat event
-  socketServer.on('chat', (data) => {
-    console.log('chat event trigged at server');
-    console.log('need to notify all the clients about this event');
-    io.sockets.emit('chat', data);
-  });
-
   // Listening for typing event
   socketServer.on('typing', (data) => {
-    console.log(`Server received ${data} is typing`);
-    console.log('need to inform all the clients about this');
+    // console.log(`Server received ${data} is typing`);
+    // console.log('need to inform all the clients about this');
     io.sockets.emit('typing', data);
     // socket.broadcast.emit('typing', data);
+  });
+
+  socketServer.on('sendComment', (data) => {
+    // console.log(`Server received ${data} is typing`);
+    // console.log('need to inform all the clients about this');
+    io.sockets.emit('spreadComment', data);
+    // socket.broadcast.emit('spreadComment', data);
   });
 });
 

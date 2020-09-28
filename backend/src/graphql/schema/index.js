@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { ApolloServer, gql } from 'apollo-server-express';
-// import { graphqlUploadExpress } from 'graphql-upload';
+// import { GraphQLUpload } from 'graphql-upload';
 import { merge } from 'lodash';
 import jwt from 'jsonwebtoken';
 import config from '../../config';
@@ -23,6 +23,7 @@ let resolvers = {
   Query: {
     status: () => 'ok',
   },
+  // Upload: GraphQLUpload,
 };
 
 
@@ -56,17 +57,32 @@ const schema = new ApolloServer({
     },
   },
   context: async ({ req, res }) => {
+    const context = {};
     // https://www.apollographql.com/docs/apollo-server/security/authentication/
     let userData = null;
+    // TODO: save the image from stream (I give up doing this, as GQL cannot upload file by
+    // itself -> I have no idea how to handle stream)
+    if (req.body.variables && req.body.variables.postData) {
+      try {
+        const image = await req.body.variables.postData.image;
+        console.log(image);
+        context.image = image;
+      } catch (error) {
+        console.log('Image in this request is missing');
+      }
+    }
+
     try {
       const token = req.headers.authorization.split(' ')[1];
       userData = jwt.verify(token, config.JWT_KEY);
       const user = getUser(userData.userId);
-      return { user };
+      context.user = user;
+      return context;
     } catch (error) {
       console.log('Token is missing or incorrect');
     }
-    return { user: userData };
+    context.user = userData;
+    return context;
   },
 });
 

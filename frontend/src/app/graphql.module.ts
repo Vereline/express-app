@@ -3,10 +3,13 @@ import {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';
 import {HttpLinkModule, HttpLink} from 'apollo-angular-link-http';
 import {InMemoryCache} from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
+import { createUploadLink } from 'apollo-upload-client';
+// import { createUploadLink } from 'apollo-upload-file'
 
 const uri = 'http://localhost:3005/graphql'; // <-- add the URL of the GraphQL server here
 export function createApollo(httpLink: HttpLink) {
-  const http = httpLink.create({uri});
+  // const http = httpLink.create({uri});
+  const http = createUploadLink({uri})
   
   const authLink = new ApolloLink((operation, forward) => {
     // Get the authentication token from local storage if it exists

@@ -70,6 +70,21 @@ export class UserService {
     return this.http.get(this.rootUrl +'/api/users/' + tokenPayload.userId, {headers: reqHeader});
   }
 
+  updateUserData(data, image) {
+    const token = localStorage.getItem('token');
+    const tokenPayload = decode(token);
+    const fd  = new FormData();
+    fd.append('email', data.email)
+    fd.append('firstName', data.firstName)
+    fd.append('lastName', data.lastName)
+    fd.append('birthDate', data.birthDate)
+    if (image) {
+      fd.append('image', image, image.name)
+    }
+    var reqHeader = new HttpHeaders({'Authorization': 'JWT ' + token });
+    return this.http.patch(this.rootUrl +'/api/users/' + tokenPayload.userId, fd, {headers: reqHeader});
+  }
+
   logoutUser() {
     localStorage.clear();
     this.isLoginUser.next(false);

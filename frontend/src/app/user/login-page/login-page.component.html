@@ -1,30 +1,30 @@
 <mat-card>
   <mat-card-content>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <h2>Log in</h2>
+      <h2>{{'login.login' | translate }}</h2>
       <mat-error *ngIf="isLoginError">
-        The email or password is not valid
+        {{'login.formError' | translate }}
       </mat-error>
       <mat-form-field class="full-width-input">
-        <mat-label>Email</mat-label>
+        <mat-label>{{'login.emailLabel' | translate }}</mat-label>
         <input matInput placeholder="Email" formControlName="email" required>
         <mat-error>
-          Please provide a valid email
+          {{'login.emailError' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <mat-label>Password</mat-label>
+        <mat-label>{{'login.passwordLabel' | translate }}</mat-label>
         <input matInput type="password" placeholder="Password" formControlName="password" required>
         <mat-error>
-          Please provide a valid password
+          {{'login.passwordError' | translate }}
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary">Login</button>
+      <button mat-raised-button color="primary">{{'login.loginButton' | translate }}</button>
     </form>
     <a href="http://localhost:3005/api/social/github" target="_blank">
       <button mat-raised-button color="light">
         <fa-icon [icon]="faGithub"></fa-icon>
-        <span>Github login</span>
+        <span>{{'login.githubLogin' | translate }}</span>
       </button>
     </a>
   </mat-card-content>

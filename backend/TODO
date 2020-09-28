@@ -38,6 +38,7 @@ TODO: set up debug (while debugging "iconv": "^3.0.0", <- this stuff is required
 
 // Node js
 https://nodejs.org/en/ 
+https://metanit.com/web/nodejs/6.8.php
 
 // TODO read after initail node js introduction
 https://habr.com/ru/post/424199/
@@ -168,6 +169,8 @@ https://www.youtube.com/watch?v=jD7FnbI76Hg&ab_channel=TraversyMedia
 https://github.com/bradtraversy/chatcord
 https://github.com/chandransuresh/MEAN-Socket-IO
 
+// socket export
+https://stackoverflow.com/questions/51448297/share-server-from-socket-io-between-files
 
 // mean GraphQL
 https://developer.okta.com/blog/2018/11/30/web-app-with-express-angular-graphql

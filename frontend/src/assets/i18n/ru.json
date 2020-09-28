@@ -1,0 +1,125 @@
+{
+    "navbar": {
+        "blog": "Блог",
+        "about": "О нас",
+        "menu": {
+            "name": "Меню",
+            "blog": "Блог",
+            "about": "О нас",
+            "login": "Войти",
+            "signup": "Регистрация",
+            "profile": "Настройки профиля",
+            "logout": "Выйти"
+        },
+        "matMenu": {
+            "profile": "Настройки профиля",
+            "logout": "Выйти"
+        }
+    },
+    "about": {
+        "title": "О нас",
+        "text1": "In sed neque id libero pretium luctus. Vivamus faucibus. Ut vitae elit. In hac habitasse platea dictumst. Proin et nisl ac orci tempus luctus. Aenean lacinia justo at nisi. Vestibulum sed eros sit amet nisl lobortis commodo. Suspendisse nulla. Vivamus ac lorem. Aliquam pulvinar purus at felis. Quisque convallis nulla id ipsum. Praesent vitae urna. Fusce blandit nunc nec mi. Praesent vestibulum hendrerit ante.",
+        "text2": "Vivamus accumsan. Donec molestie pede vel urna. Curabitur eget sem ornare felis gravida vestibulum.Sed pulvinar, tellus in venenatis vehicula, lorem magna dignissim erat, in accumsan ante lorem sit amet lorem."
+    },
+    "notFound": {
+        "title": "Упс! страница не найдена",
+        "subTitle": "К сожалению, запрашиваемая страница не найдена",
+        "text1": "Попробуйте перейти на ",
+        "text2": " страницу"
+    },
+    "post": {
+        "loading": "Загрузка...",
+        "updateButton": "Обновить пост",
+        "createdAt": "Создано ",
+        "createdBy": "Автор: ",
+        "comments": "Комментарии:",
+        "createdAtComment": "Создано ",
+        "createdByComment": "Автор: ",
+        "noComments": "Нет комментариев. Будьте первым, кто оставит комментарий!",
+        "commentForm": {
+            "title": "Доавьте вашкомментарий",
+            "label": "Текст",
+            "errorText": "Пожалуйста, введите текст",
+            "button": "Опубликовать"
+        }
+    },
+    "posts": {
+        "loading": "Загрузка...",
+        "createdAt": "Создано ",
+        "createdBy": "Автор: ",
+        "readFullButton": "Читать полностью"
+    },
+    "postUpdate": {
+        "loading": "Загрузка...",
+        "updateImage": "Загрузить фото",
+        "title": "Заголовок",
+        "titleError": "Пожалуйста, введите заголовок",
+        "text": "Текст",
+        "textError": "Пожалуйста, введите текст",
+        "createdAt": "Создано ",
+        "updatedAt": "Обновлнено ",
+        "Id": "Id ",
+        "createButton": "Создать",
+        "updateButton": "Обновить"
+    },
+    "login": {
+        "login": "Войти",
+        "loginButton": "Войти",
+        "emailLabel": "Email",
+        "passwordLabel": "Пароль",
+        "formError": "Email или пароль введен неправильно",
+        "emailError": "Пожалуйста, введите валидный email",
+        "passwordError": "Пожалуйста, введите валидный пароль",
+        "githubLogin": "Войти через Github"
+    },
+    "signup":{
+        "signup": "Регистрация",
+        "signupButton": "Регистрация",
+        "emailLabel": "Email",
+        "firstNameLabel": "Имя",
+        "lastNameLabel": "Фамилия",
+        "birthDateLabel": "Дата рождения",
+        "passwordLabel": "Пароль",
+        "confirmPasswordLabel": "Подтверждение пароля",
+        "formError": "Пожалуйста, исправьте ошибки и попробуйте снова",
+        "emailError": "Пожалуйста, введите валидный email",
+        "firstNameError": "Пожалуйста, введите имя",
+        "lastNameError": "Пожалуйста, введите фамилию",
+        "birthDateError": "Пожалуйста, введите дату рождения",
+        "passwordError": "Пожалуйста, введите валидный пароль",
+        "confirmPasswordError": "Пожалуйста, введите пароль еще раз",
+        "githubLogin": "Войти через Github"
+    },
+    "user": {
+        "adminButton": "Перейти на Админ панель",
+        "uploadImageButton": "Заргузить фото",
+        "emailLabel": "Email",
+        "firstNameLabel": "Имя",
+        "lastNameLabel": "Фамилия",
+        "birthDateLabel": "Дата рождения",
+        "formError": "Пожалуйста, исправьте ошибки и попробуйте снова",
+        "emailError": "Пожалуйста, введите валидный email",
+        "firstNameError": "Пожалуйста, введите имя",
+        "lastNameError": "Пожалуйста, введите фамилию",
+        "birthDateError": "Пожалуйста, введите дату рождения",
+        "createdAt": "Создано ",
+        "updatedAt": "Обновлнено ",
+        "Id": "Id ",
+        "updateButton": "Обновить"
+    },
+    "footer": {
+        "address": "Aдрес",
+        "addressText": "Это мой адрес.",
+        "social": "Социальные сети",
+        "contact": "Связаться со мной"
+    },
+    "sidebar": {
+        "button": "Узнать больше"
+    },
+    "infoBlock": {
+        "title": "О проекте",
+        "button": "Узнать больше",
+        "spanText": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 1700s,",
+        "text": "Pellentesque ac finibus orci. Mauris eu nibh sed libero mollis pellentesque et in est. Donec vel vehicula dui. Cras tincidunt, orci a suscipit sagittis, sapien tortor aliquam ipsum, nec sodales ante enim ut dui."
+    }
+}

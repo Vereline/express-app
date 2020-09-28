@@ -8,8 +8,19 @@ import User from '../models/user';
 // We have to tell AdminBro that we will manage mongoose resources with it
 AdminBro.registerAdapter(require('admin-bro-mongoose'));
 
+const pageResourceOptions = {
+  properties: {
+    postText: {
+      type: 'richtext',
+      custom: {
+        // some custom options
+      },
+    },
+  },
+};
+
 const adminBro = new AdminBro({
-  resources: [Post, Comment, User],
+  resources: [{ resource: Post, options: pageResourceOptions }, Comment, User],
   rootPath: '/admin',
 });
 

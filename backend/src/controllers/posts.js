@@ -81,6 +81,7 @@ export default {
     });
     // post.save().exec();
     author.posts.push(post);
+    author.save();
     post.save()
       .then((result) => {
         console.log(result);
@@ -107,7 +108,7 @@ export default {
       updateData.image = `http://localhost:3005/${req.file.path}`;
     }
 
-    Post.update({ _id: postId }, {
+    Post.findByIdAndUpdate(postId, {
       $set: {
         ...updateData,
       },

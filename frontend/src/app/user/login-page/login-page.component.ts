@@ -4,6 +4,7 @@ import { UserService } from '../../services/user/user.service';
 import {  HttpErrorResponse } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-page',
@@ -20,11 +21,14 @@ export class LoginPageComponent implements OnInit {
   private token: string;
 
   constructor(private userService : UserService, private router: Router, private fb: FormBuilder,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute, public translate: TranslateService) { 
 
     }
 
   ngOnInit(): void {
+    this.translate.addLangs(['en', 'ru']);
+    this.translate.setDefaultLang('en');
+
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/user';
     this.route.queryParams.subscribe(params => {
         this.token = params['token'];

@@ -17,16 +17,17 @@ const Mutation = gql`
 export const mutationTypes = () => [Mutation];
 
 export const mutationResolvers = {
-  Mutation: { // TODO also test this flow?????
+  Mutation: {
     createComment: async (root, args, context, info) => {
       const user = await context.user;
       if (user === null) {
         throw new AuthenticationError('User is not authentiated');
       }
-      const post = await Post.findById(args.commentData.post)
-      const res = await Comment.create(...args.commentData, post);
+      const post = await Post.findById(args.commentData.post);
+      const res = await Comment.create({ text: args.commentData.text, author: user, post });
       post.comments.push(res);
-      return prepare(await Comment.findOne({ _id: res._id }));
+      post.save();
+      return prepare(await Comment.findOne({ _id: res._id }).populate('author').populate('post'));
     },
     updateComment: async (root, args, context, info) => {
       const user = await context.user;

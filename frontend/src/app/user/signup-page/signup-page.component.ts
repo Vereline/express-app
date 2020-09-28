@@ -60,7 +60,7 @@ export class SignupPageComponent implements OnInit {
         this.userService.userRegistration(user).subscribe((data : any) => {
           localStorage.setItem("token", data["token"]);
           this.router.navigate([this.returnUrl]);
-        }, (err : HttpErrorResponse)=> {
+        }, (err : HttpErrorResponse) => {
           this.isSignupError = true;
           this.formSubmitAttempt = true;
         });

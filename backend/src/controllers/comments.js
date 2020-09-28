@@ -97,6 +97,7 @@ export default {
           post: req.body.post,
         });
         post.comments.push(comment);
+        post.save();
         return comment.save();
       })
       .then((result) => {
@@ -118,7 +119,7 @@ export default {
       updatedAt: new Date(Date.now()),
       ...req.body,
     };
-    Comment.update({ _id: commentId }, {
+    Comment.findByIdAndUpdate(commentId, {
       $set: {
         ...updateData,
       },

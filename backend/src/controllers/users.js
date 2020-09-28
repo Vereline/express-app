@@ -29,7 +29,7 @@ export default {
       updateData.photo = `http://localhost:3005/${req.file.path}`;
     }
 
-    User.update({ _id: userId }, {
+    User.findByIdAndUpdate(userId, {
       $set: {
         ...updateData,
       },

@@ -1,0 +1,127 @@
+{
+    "navbar": {
+        "blog": "Blog",
+        "about": "About",
+        "menu": {
+            "name": "Menu",
+            "blog": "Blog",
+            "about": "About",
+            "login": "Login",
+            "signup": "Signup",
+            "profile": "Profile Settings",
+            "logout": "Logout"
+        },
+        "matMenu": {
+            "profile": "Profile Settings",
+            "logout": "Logout"
+        }
+    },
+    "about": {
+        "title": "About us",
+        "text1": "In sed neque id libero pretium luctus. Vivamus faucibus. Ut vitae elit. In hac habitasse platea dictumst. Proin et nisl ac orci tempus luctus. Aenean lacinia justo at nisi. Vestibulum sed eros sit amet nisl lobortis commodo. Suspendisse nulla. Vivamus ac lorem. Aliquam pulvinar purus at felis. Quisque convallis nulla id ipsum. Praesent vitae urna. Fusce blandit nunc nec mi. Praesent vestibulum hendrerit ante.",
+        "text2": "Vivamus accumsan. Donec molestie pede vel urna. Curabitur eget sem ornare felis gravida vestibulum.Sed pulvinar, tellus in venenatis vehicula, lorem magna dignissim erat, in accumsan ante lorem sit amet lorem."
+    },
+    "notFound": {
+        "title": "Oops! Page not found",
+        "subTitle": "We are sorry, but the page you requested was not found",
+        "text1": "You might want to go to the ",
+        "text2": " page"
+    },
+    "post": {
+        "loading": "Loading...",
+        "updateButton": "Update post",
+        "createdAt": "Created at ",
+        "createdBy": "By ",
+        "comments": "Comments:",
+        "createdAtComment": "Created at ",
+        "createdByComment": "By ",
+        "noComments": "Unfortunately, here are no comments. Be the first one to comment!",
+        "commentForm": {
+            "title": "Add your comment",
+            "label": "Your text",
+            "errorText": "Please provide a valid text",
+            "button": "Publish"
+        }
+
+    },
+    "posts": {
+        "loading": "Loading...",
+        "createdAt": "Created at ",
+        "createdBy": "By ",
+        "readFullButton": "Read Full"
+    },
+    "postUpdate": {
+        "loading": "Loading...",
+        "updateImage": "Upload image",
+        "uploadImageButton": "Upload photo",
+        "title": "Title",
+        "titleError": "Please provide a valid title",
+        "text": "Text",
+        "textError": "Please provide a valid text",
+        "createdAt": "Created At ",
+        "updatedAt": "Updated At ",
+        "Id": "Id ",
+        "createButton": "Create",
+        "updateButton": "Update"
+    },
+    "login": {
+        "login": "Login",
+        "loginButton": "Login",
+        "emailLabel": "Email",
+        "passwordLabel": "Password",
+        "formError": "The email or password is not valid",
+        "emailError": "Please provide a valid email",
+        "passwordError": "Please provide a valid password",
+        "githubLogin": "Github login"
+    },
+    "signup":{
+        "signup": "Signup",
+        "signupButton": "Signup",
+        "emailLabel": "Email",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "birthDateLabel": "Birth Date",
+        "passwordLabel": "Password",
+        "confirmPasswordLabel": "Password Confirmation",
+        "formError": "Please, fix errors in the form and try to sign up again",
+        "emailError": "Please provide a valid email",
+        "firstNameError": "Please provide a valid first name",
+        "lastNameError": "Please provide a valid last name",
+        "birthDateError": "Please provide a valid birth date",
+        "passwordError": "Please provide a valid password",
+        "confirmPasswordError": "Please provide a valid password confirmation",
+        "githubLogin": "Github login"
+    },
+    "user": {
+        "adminButton": "Go to Admin page",
+        "uploadImageButton": "Upload photo",
+        "emailLabel": "Email",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "birthDateLabel": "Birth Date",
+        "formError": "Please, fix errors in the form and try again",
+        "emailError": "Please provide a valid email",
+        "firstNameError": "Please provide a valid first name",
+        "lastNameError": "Please provide a valid last name",
+        "birthDateError": "Please provide a valid birth date",
+        "createdAt": "Created At ",
+        "updatedAt": "Updated At ",
+        "Id": "Id ",
+        "updateButton": "Update"
+    },
+    "footer": {
+        "address": "Address",
+        "addressText": "Here is my address.",
+        "social": "Social networks",
+        "contact": "Contact Me"
+    },
+    "sidebar": {
+        "button": "See more"
+    },
+    "infoBlock": {
+        "title": "About this project",
+        "button": "See more",
+        "spanText": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 1700s,",
+        "text": "Pellentesque ac finibus orci. Mauris eu nibh sed libero mollis pellentesque et in est. Donec vel vehicula dui. Cras tincidunt, orci a suscipit sagittis, sapien tortor aliquam ipsum, nec sodales ante enim ut dui."
+    }
+}

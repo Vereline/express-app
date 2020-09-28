@@ -1,18 +1,20 @@
 <a *ngIf="isAdmin" routerLink="/posts/create"><button mat-raised-button color="primary">Create post</button></a>
-<div *ngIf="loading">Loading...</div>
+<div *ngIf="loading">{{'posts.loading' | translate }}</div>
 <div *ngFor="let post of posts">
     <mat-card class="post-card">
         <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{ post.title }}</mat-card-title>
-            <mat-card-subtitle><span *ngIf="post.createdAt !== null">Created at {{ post.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="post.author !== null">By {{ post.author.firstName }} {{ post.author.lastName }}</span></mat-card-subtitle>
+            <img *ngIf="post.author !== null" [src]="post.author.photo || getDetaultPhoto()" alt="User image">
+            <mat-card-subtitle><span *ngIf="post.createdAt !== null">{{'posts.createdAt' | translate }}{{ post.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="post.author !== null">{{'posts.createdBy' | translate }}{{ post.author.firstName }} {{ post.author.lastName }}</span></mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image *ngIf="post.image !== null" [src]="post.image" alt="Post image">
         <mat-card-content>
-            <p>{{ post.postText | slice:0:150 }}<span *ngIf="post.postText.length > 150">...</span></p>
+            <!-- <p>{{ post.postText | slice:0:150 }}<span *ngIf="post.postText.length > 150">...</span></p> -->
+            <quill-view [content]="getPostText(post.postText, 50)" [preserveWhitespace]="true" [sanitize]="true" format="html"></quill-view>
         </mat-card-content>
         <mat-card-actions>
-            <a [routerLink]="['post', post._id]"><button mat-raised-button color="primary">READ FULL</button></a>
+            <a [routerLink]="['post', post._id]"><button mat-raised-button color="primary">{{'posts.readFullButton' | translate }}</button></a>
         </mat-card-actions>
     </mat-card>
 </div>

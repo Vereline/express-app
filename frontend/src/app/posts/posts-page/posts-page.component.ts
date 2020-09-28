@@ -53,4 +53,18 @@ export class PostsPageComponent implements OnInit {
       );
   }
 
+  getDetaultPhoto() {
+    return 'assets/images/user-default.png';
+  }
+
+  getPostText(text, sliceLength) {
+    if (sliceLength < 1) {
+      throw Error("Incorrect length");
+    }
+    if (text.length > sliceLength) {
+      return text.slice(0, sliceLength) + '...';
+    }
+    return text
+  }
+
 }
