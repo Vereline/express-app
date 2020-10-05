@@ -42,7 +42,6 @@
             "errorText": "Please provide a valid text",
             "button": "Publish"
         }
-
     },
     "posts": {
         "loading": "Loading...",
@@ -107,7 +106,12 @@
         "createdAt": "Created At ",
         "updatedAt": "Updated At ",
         "Id": "Id ",
-        "updateButton": "Update"
+        "updateButton": "Update",
+        "imagePlaceholder": "User image",
+        "emailPlaceholder": "Email",
+        "firstNamePlaceholder": "First Name",
+        "lastNamePlaceholder": "Last Name",
+        "birthDatePlaceholder": "Birth Date"
     },
     "footer": {
         "address": "Address",

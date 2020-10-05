@@ -5,36 +5,36 @@
 <mat-list>
     <mat-card>
         <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-            <img [src]="user.photo || getDetaultPhoto()" alt="User image">
+            <img [src]="user.photo || getDetaultPhoto()" [alt]="'user.imagePlaceholder' | translate">
             <input style="display: none" type="file" (change)="onFileSelected($event)" #fileInput>
-            <button (click)="fileInput.click()">{{'user.uploadImageButton' | translate }}</button>
+            <button mat-raised-button color="primary" (click)="fileInput.click()">{{'user.uploadImageButton' | translate }}</button>
             <mat-error *ngIf="formError">
                 {{'user.formError' | translate }}
               </mat-error>
             <mat-form-field class="full-width-input">
                 <mat-label>{{'user.emailLabel' | translate }}</mat-label>
-                <input matInput placeholder="Email" formControlName="email" required value="{{user.email}}">
+                <input matInput [placeholder]="{{'user.emailPlaceholder' | translate }}" formControlName="email" required value="{{user.email}}">
                 <mat-error>
                     {{'user.emailError' | translate }}
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width-input">
                 <mat-label>{{'user.firstNameLabel' | translate }}</mat-label>
-                <input matInput placeholder="First Name" formControlName="firstName" required value="{{user.firstName}}">
+                <input matInput [placeholder]="{{'user.firstNamePlaceholder' | translate }}" formControlName="firstName" required value="{{user.firstName}}">
                 <mat-error>
                     {{'user.firstNameError' | translate }}
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width-input">
                 <mat-label>{{'user.lastNameLabel' | translate }}</mat-label>
-                <input matInput placeholder="Last Name" formControlName="lastName" required value="{{user.lastName}}">
+                <input matInput [placeholder]="{{'user.lastNamePlaceholder' | translate }}" formControlName="lastName" required value="{{user.lastName}}">
                 <mat-error>
                     {{'user.lastNameError' | translate }}
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width-input">
                 <mat-label>{{'user.birthDateLabel' | translate }}</mat-label>
-                <input matInput [matDatepicker]="picker" placeholder="Birth Date" formControlName="birthDate" required required value="{{user.birthDate}}">
+                <input matInput [matDatepicker]="picker" [placeholder]="{{'user.birthDatePlaceholder' | translate }}" formControlName="birthDate" required required value="{{user.birthDate}}">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <mat-error>

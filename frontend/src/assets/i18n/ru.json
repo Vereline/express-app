@@ -52,6 +52,7 @@
     "postUpdate": {
         "loading": "Загрузка...",
         "updateImage": "Загрузить фото",
+        "uploadImageButton": "Загрузить фото",
         "title": "Заголовок",
         "titleError": "Пожалуйста, введите заголовок",
         "text": "Текст",
@@ -105,7 +106,12 @@
         "createdAt": "Создано ",
         "updatedAt": "Обновлнено ",
         "Id": "Id ",
-        "updateButton": "Обновить"
+        "updateButton": "Обновить",
+        "imagePlaceholder": "фото",
+        "emailPlaceholder": "Email",
+        "firstNamePlaceholder": "Имя",
+        "lastNamePlaceholder": "Фамилия",
+        "birthDatePlaceholder": "Дата рождения"
     },
     "footer": {
         "address": "Aдрес",

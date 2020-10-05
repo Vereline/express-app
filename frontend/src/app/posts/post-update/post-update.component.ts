@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
 import { UserService } from 'src/app/services/user/user.service';
+import { PostsService } from 'src/app/services/posts/posts.service';
 import gql from "graphql-tag";
 import { EditorChangeContent, EditorChangeSelection } from 'ngx-quill';
 import Quill from 'quill'
@@ -49,7 +50,7 @@ export class PostUpdateComponent implements OnInit {
   `
 
   constructor(private userService : UserService, private activateRoute: ActivatedRoute, private apollo: Apollo,
-    private fb: FormBuilder,private router: Router){
+    private fb: FormBuilder, private router: Router, private postService: PostsService){
     this.id = this.activateRoute.snapshot.params['id'];
     this.modules = {
       'emoji-shortname': true,
@@ -160,6 +161,11 @@ export class PostUpdateComponent implements OnInit {
             }
           }).subscribe(({ data }) => {
             // console.log( data )
+            if (this.selectedImage) {
+              this.postService.updatePostImage(data['updatePost']['_id'], this.selectedImage).subscribe(({ newData }) =>{
+                console.log(newData)
+              })
+            }
             this.router.navigate(['/posts/post', data['updatePost']['_id']]);
           },(error) => {
             console.log('There was an error sending the query', error);
@@ -174,6 +180,11 @@ export class PostUpdateComponent implements OnInit {
              }
             }
           }).subscribe(({ data }) => {
+            if (this.selectedImage){
+              this.postService.updatePostImage(data['createPost']['_id'], this.selectedImage).subscribe(({ newData }) => {
+                console.log(newData)
+              })
+            }
             this.router.navigate(['/posts/post', data['createPost']['_id']]);
           },(error) => {
             console.log('There was an error sending the query', error);

@@ -4,7 +4,7 @@
         <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
             <img *ngIf="post.image" [src]="post.image" alt="Post image">
             <input style="display: none" type="file" (change)="onFileSelected($event)" #fileInput>
-            <button (click)="fileInput.click()">{{'postUpdate.uploadImageButton' | translate }}</button>
+            <button mat-raised-button color="primary" (click)="fileInput.click()">{{'postUpdate.uploadImageButton' | translate }}</button>
             <p>{{'postUpdate.updateImage' | translate }}</p>
             <mat-form-field class="full-width-input">
                 <mat-label>{{'postUpdate.title' | translate }}</mat-label>
