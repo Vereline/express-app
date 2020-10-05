@@ -51,11 +51,11 @@ export class SignupPageComponent implements OnInit {
     if (this.signupForm.valid) {
       try {
         const user: User = {
-          Email: this.signupForm.get('email').value, 
-          Password: this.signupForm.get('password').value, 
-          FirstName: this.signupForm.get('firstName').value, 
-          LastName: this.signupForm.get('lastName').value, 
-          BirthDate: this.signupForm.get('birthDate').value,
+          email: this.signupForm.get('email').value, 
+          password: this.signupForm.get('password').value, 
+          firstName: this.signupForm.get('firstName').value, 
+          lastName: this.signupForm.get('lastName').value, 
+          birthDate: this.signupForm.get('birthDate').value,
         };
         this.userService.userRegistration(user).subscribe((data : any) => {
           localStorage.setItem("token", data["token"]);

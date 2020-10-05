@@ -7,28 +7,28 @@
       </mat-error>
       <mat-form-field class="full-width-input">
         <mat-label>{{'signup.emailLabel' | translate }}</mat-label>
-        <input matInput placeholder="Email" formControlName="email" required>
+        <input matInput placeholder="{{'signup.emailLabel' | translate }}" formControlName="email" required>
         <mat-error>
           {{'signup.emailError' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>{{'signup.firstNameLabel' | translate }}</mat-label>
-        <input matInput placeholder="First Name" formControlName="firstName" required>
+        <input matInput placeholder="{{'signup.emailPlaceholder' | translate }}" formControlName="firstName" required>
         <mat-error>
           {{'signup.firstNameError' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>{{'signup.lastNameLabel' | translate }}</mat-label>
-        <input matInput placeholder="Last Name" formControlName="lastName" required>
+        <input matInput placeholder="{{'signup.lastNamePlaceholder' | translate }}" formControlName="lastName" required>
         <mat-error>
           {{'signup.lastNameError' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>{{'signup.birthDateLabel' | translate }}</mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="Birth Date" formControlName="birthDate" required>
+        <input matInput [matDatepicker]="picker" placeholder="{{'signup.birthDatePlaceholder' | translate }}" formControlName="birthDate" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error>
@@ -37,14 +37,14 @@
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>{{'signup.passwordLabel' | translate }}</mat-label>
-        <input matInput type="password" placeholder="Password" formControlName="password" required>
+        <input matInput type="password" placeholder="{{'signup.passwordPlaceholder' | translate }}" formControlName="password" required>
         <mat-error>
           {{'signup.passwordError' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>{{'signup.confirmPasswordLabel' | translate }}</mat-label>
-        <input matInput type="password" placeholder="Password Confirmation" formControlName="passwordConfirmation" required [errorStateMatcher]="matcher">
+        <input matInput type="password" placeholder="{{'signup.passwordConfirmPlaceholder' | translate }}" formControlName="passwordConfirmation" required [errorStateMatcher]="matcher">
         <mat-error>
           {{'signup.confirmPasswordError' | translate }}
         </mat-error>
@@ -53,7 +53,7 @@
     </form>
     <a href="http://localhost:3005/api/social/github" target="_blank">
       <button mat-raised-button color="light">
-        <fa-icon [icon]="faGithub"></fa-icon>
+        <fa-icon [icon]="faGithub" class="github-icon"></fa-icon>
         <span>{{'signup.githubLogin' | translate }}</span>
       </button>
     </a>

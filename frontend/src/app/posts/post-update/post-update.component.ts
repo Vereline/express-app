@@ -28,6 +28,7 @@ export class PostUpdateComponent implements OnInit {
   content=""
   blured = false;
   focused = false;
+  postImage = null;
 
   createPost =  gql`mutation createBlog($postData: PostInput) {
       createPost(postData: $postData) {
@@ -124,6 +125,7 @@ export class PostUpdateComponent implements OnInit {
         .subscribe(({ data, loading }) => {
           if (data.post) {
             this.post = data.post;
+            this.postImage = data.post.image;
             this.content = data.post.postText;
           }
           else {
@@ -162,7 +164,7 @@ export class PostUpdateComponent implements OnInit {
           }).subscribe(({ data }) => {
             // console.log( data )
             if (this.selectedImage) {
-              this.postService.updatePostImage(data['updatePost']['_id'], this.selectedImage).subscribe(({ newData }) =>{
+              this.postService.updatePostImage(data['updatePost']['_id'], this.selectedImage).subscribe((newData) =>{
                 console.log(newData)
               })
             }
@@ -181,7 +183,7 @@ export class PostUpdateComponent implements OnInit {
             }
           }).subscribe(({ data }) => {
             if (this.selectedImage){
-              this.postService.updatePostImage(data['createPost']['_id'], this.selectedImage).subscribe(({ newData }) => {
+              this.postService.updatePostImage(data['createPost']['_id'], this.selectedImage).subscribe((newData) => {
                 console.log(newData)
               })
             }
@@ -201,6 +203,12 @@ export class PostUpdateComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedImage = <File>event.target.files[0];
+    var reader = new FileReader();
+		reader.readAsDataURL(event.target.files[0]);
+		
+		reader.onload = (_event) => {
+			this.postImage = reader.result;
+		}
   }
 
   // Quill editor methods

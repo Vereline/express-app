@@ -11,7 +11,22 @@
       <a mat-list-item (click)="snav.toggle()" routerLink="/login" *ngIf="!isLogin"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">login</mat-icon>{{'navbar.menu.login' | translate }}</a>
       <a mat-list-item (click)="snav.toggle()" routerLink="/signup" *ngIf="!isLogin"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">input</mat-icon>{{'navbar.menu.signup' | translate }}</a>
       <a mat-list-item (click)="snav.toggle()" routerLink="/user" *ngIf="isLogin"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">settings</mat-icon>{{'navbar.menu.profile' | translate }}</a>
-      <a mat-list-item *ngIf="isLogin" (click)="logout()"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">logout</mat-icon>{{'navbar.menu.logout' | translate }}</a>
+      <a mat-list-item *ngIf="isLogin" (click)="logout()"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">logout</mat-icon>{{'navbar.menu.logout' | translate }}</a>     
+      <span>
+        <select 
+            class="form-control custom-select" 
+            #selectedLangMenu 
+            (change)="switchLang(selectedLangMenu.value)">
+          <option *ngFor="let language of translate.getLangs()" 
+            [value]="language"
+            [selected]="language === translate.currentLang">
+            {{ language }}
+          </option>
+        </select>
+      </span>
+      <span class="dark-mode-switch">
+        <mat-slide-toggle (change)="onDarkModeSwitched($event)"></mat-slide-toggle>
+      </span>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -30,10 +45,9 @@
         <a class="top-link" routerLink="/about">{{'navbar.about' | translate }}</a>
       </span>
       <span class="spacer"></span>
-
-      <span>
+      <span *ngIf="(isHandset$ | async) === false">
         <select 
-            class="form-control" 
+            class="form-control custom-select" 
             #selectedLang 
             (change)="switchLang(selectedLang.value)">
           <option *ngFor="let language of translate.getLangs()" 
@@ -41,16 +55,9 @@
             [selected]="language === translate.currentLang">
             {{ language }}
           </option>
-        </select>
+        </select>      
       </span>
-
-      <!-- <mat-form-field appearance="fill">
-        <mat-select #selectedLang (change)="switchLang(selectedLang.value)" [(value)]="translate.currentLang">
-          <mat-option *ngFor="let language of translate.getLangs()" [value]="language">{{ language }}</mat-option>
-        </mat-select>
-      </mat-form-field> -->
-
-      <span class="dark-mode-switch">
+      <span *ngIf="(isHandset$ | async) === false" class="dark-mode-switch">
         <mat-slide-toggle (change)="onDarkModeSwitched($event)"></mat-slide-toggle>
       </span>
       <span *ngIf="(isHandset$ | async) === false">

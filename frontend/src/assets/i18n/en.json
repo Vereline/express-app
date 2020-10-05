@@ -40,7 +40,9 @@
             "title": "Add your comment",
             "label": "Your text",
             "errorText": "Please provide a valid text",
-            "button": "Publish"
+            "button": "Publish",
+            "textPlaceholder": "Text",
+            "typingText": " is typing a comment"
         }
     },
     "posts": {
@@ -61,7 +63,8 @@
         "updatedAt": "Updated At ",
         "Id": "Id ",
         "createButton": "Create",
-        "updateButton": "Update"
+        "updateButton": "Update",
+        "titlePlaceholder": "Title"
     },
     "login": {
         "login": "Login",
@@ -71,7 +74,9 @@
         "formError": "The email or password is not valid",
         "emailError": "Please provide a valid email",
         "passwordError": "Please provide a valid password",
-        "githubLogin": "Github login"
+        "githubLogin": "Github login",
+        "emailPlaceholder": "Email",
+        "passwordPlaceholder": "Password"
     },
     "signup":{
         "signup": "Signup",
@@ -89,7 +94,13 @@
         "birthDateError": "Please provide a valid birth date",
         "passwordError": "Please provide a valid password",
         "confirmPasswordError": "Please provide a valid password confirmation",
-        "githubLogin": "Github login"
+        "githubLogin": "Github login",
+        "emailPlaceholder": "Email",
+        "firstNamePlaceholder": "First Name",
+        "lastNamePlaceholder": "Last Name",
+        "birthDatePlaceholder": "Birth Date",
+        "passwordPlaceholder": "Password",
+        "passwordConfirmPlaceholder": "Password Confirmation"
     },
     "user": {
         "adminButton": "Go to Admin page",

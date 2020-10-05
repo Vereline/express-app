@@ -10,23 +10,23 @@ export class PostsService {
   
   constructor(private http: HttpClient) { }
 
-  public getPosts(): Observable<any> {
+  public getPosts(){
 
   }
 
-  public getPost(postId): Observable<any> {
+  public getPost(postId){
     
   }
 
-  public updatePost(postId, postData): Observable<any> {
+  public updatePost(postId, postData){
     
   }
 
-  public createPost(postData): Observable<any> {
+  public createPost(postData){
     
   }
 
-  public deletePost(postId): Observable<any> {
+  public deletePost(postId){
     
   }
 

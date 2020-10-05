@@ -21,11 +21,11 @@ export class UserService {
 
   userRegistration(user: User) {
     const body: User = {
-      Password: user.Password,
-      Email: user.Email,
-      FirstName: user.FirstName,
-      LastName: user.LastName,
-      BirthDate: user.BirthDate,
+      password: user.password,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      birthDate: user.birthDate,
     }
     var reqHeader = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.rootUrl + '/api/signup', body, {headers : reqHeader});

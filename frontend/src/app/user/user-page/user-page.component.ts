@@ -14,6 +14,7 @@ export class UserPageComponent implements OnInit {
   public formError: Boolean;
   public formSubmitAttempt: Boolean;
   userForm: FormGroup;
+  userPhoto = null;
   selectedImage: File = null;
 
   constructor(private userService : UserService, private fb: FormBuilder) { }
@@ -25,6 +26,7 @@ export class UserPageComponent implements OnInit {
     
     this.userService.getUserData().subscribe((data : any) => {
       this.user = data.user;
+      this.userPhoto = data.user.photo;
       localStorage.setItem("firstName", data.user.firstName)
       localStorage.setItem("lastName", data.user.lastName)
       localStorage.setItem("email", data.user.email)
@@ -68,6 +70,12 @@ export class UserPageComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedImage = <File>event.target.files[0];
+    var reader = new FileReader();
+		reader.readAsDataURL(event.target.files[0]);
+		
+		reader.onload = (_event) => {
+			this.userPhoto = reader.result;
+		}
   }
 
   getDetaultPhoto() {

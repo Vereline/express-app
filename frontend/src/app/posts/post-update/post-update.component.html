@@ -2,14 +2,14 @@
 <mat-list>
     <mat-card>
         <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
-            <img *ngIf="post.image" [src]="post.image" alt="Post image">
+            <img *ngIf="postImage" [src]="postImage" alt="Post image">
             <input style="display: none" type="file" (change)="onFileSelected($event)" #fileInput>
             <button mat-raised-button color="primary" (click)="fileInput.click()">{{'postUpdate.uploadImageButton' | translate }}</button>
             <p>{{'postUpdate.updateImage' | translate }}</p>
             <mat-form-field class="full-width-input">
                 <mat-label>{{'postUpdate.title' | translate }}</mat-label>
-                <input matInput *ngIf="id" placeholder="Title" formControlName="title" required value="{{post.title}}">
-                <input matInput *ngIf="!id" placeholder="Title" formControlName="title" required>
+                <input matInput *ngIf="id" placeholder="{{'postUpdate.titlePlaceholder' | translate }}" formControlName="title" required value="{{post.title}}">
+                <input matInput *ngIf="!id" placeholder="{{'postUpdate.titlePlaceholder' | translate }}" formControlName="title" required>
                 <mat-error>
                     {{'postUpdate.titleError' | translate }}
                 </mat-error>

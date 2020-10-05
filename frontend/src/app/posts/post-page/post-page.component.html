@@ -1,11 +1,14 @@
-<a *ngIf="isAdmin" [routerLink]="['/posts/post/update', postId]"><button mat-raised-button color="primary">{{'post.updateButton' | translate }}</button></a> 
+<a *ngIf="isAdmin" [routerLink]="['/posts/post/update', postId]">
+    <button style="margin-left: 15px; margin-top: 15px;" mat-raised-button color="primary">{{'post.updateButton' | translate }}</button>
+</a> 
 <div *ngIf="loading">{{'post.loading' | translate }}</div>
 <mat-card class="post-card">
     <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
+        <div mat-card-avatar class="example-header-image">
+            <img *ngIf="post.author" [src]="post.author.photo || getDetaultPhoto()" class="author-photo" alt="User image">
+        </div>
         <mat-card-title>{{ post.title }}</mat-card-title>
-        <img *ngIf="post.author" [src]="post.author.photo || getDetaultPhoto()" alt="User image">
-        <mat-card-subtitle><span *ngIf="post.createdAt !== null">{{'post.createdAt' | translate }}{{ post.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="post.author">{{'post.createdBy' | translate }}{{ post.author.firstName }} {{ post.author.lastName }}</span></mat-card-subtitle>
+        <mat-card-subtitle><span *ngIf="post.createdAt !== null" style="margin-right: 5px;">{{'post.createdAt' | translate }}{{ post.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="post.author">{{'post.createdBy' | translate }}{{ post.author.firstName }} {{ post.author.lastName }}</span></mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image *ngIf="post.image" [src]="post.image" alt="Post image">
     <mat-card-content>
@@ -13,16 +16,17 @@
         <quill-view [content]="post.postText" [preserveWhitespace]="true" [sanitize]="true" format="html"></quill-view>
     </mat-card-content>
 </mat-card>
-<h3>{{'post.comments' | translate }}</h3>
+<h3 style="margin-left: 10px;">{{'post.comments' | translate }}</h3>
 <div *ngFor="let comment of comments">
     <mat-card class="post-card">
         <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <img *ngIf="comment.author !== null" [src]="comment.author.photo || getDetaultPhoto()" alt="User image">
-            <mat-card-subtitle><span *ngIf="comment.createdAt !== null">{{'post.createdAtComment' | translate }}{{ comment.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="comment.author !== null">{{'post.createdByComment' | translate }}{{ comment.author.firstName }} {{ comment.author.lastName }}</span></mat-card-subtitle>
+            <div mat-card-avatar class="example-header-image">
+                <img *ngIf="comment.author !== null" [src]="comment.author.photo || getDetaultPhoto()" class="author-photo" alt="User image">
+            </div>
+            <mat-card-subtitle><span *ngIf="comment.createdAt !== null" style="margin-right: 5px;">{{'post.createdAtComment' | translate }}{{ comment.createdAt | date:'MM/dd/yyyy' }}</span><span *ngIf="comment.author !== null">{{'post.createdByComment' | translate }}{{ comment.author.firstName }} {{ comment.author.lastName }}</span></mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <p>{{ comment.text }}</p>
+            <p style="margin-top: 20px;">{{ comment.text }}</p>
         </mat-card-content>
     </mat-card>
 </div>
@@ -36,7 +40,7 @@
             <p>{{'post.commentForm.title' | translate }}</p>
             <mat-form-field class="full-width-input">
                 <mat-label>{{'post.commentForm.label' | translate }}</mat-label>
-                <input matInput placeholder="Text" formControlName="text" required (keypress)="messageTyping()">
+                <input matInput placeholder="{{'post.commentForm.textPlaceholder' | translate }}" formControlName="text" required (keypress)="messageTyping()">
                 <mat-error>
                     {{'post.commentForm.errorText' | translate }}
                 </mat-error>

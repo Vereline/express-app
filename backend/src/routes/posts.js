@@ -174,7 +174,7 @@ api.post('/postwithimage', checkAuth.checkAuth, upload.single('image'), posts.po
  *      - JWT: [read, write, admin]
  *      - bearerAuth: [read, write, admin]
  */
-api.patch('/:id', checkAuth.checkAuth, posts.postsUpdate);
+api.patch('/:id', checkAuth.checkAuth, upload.single('image'), posts.postsUpdate);
 
 
 /**

@@ -7,14 +7,14 @@
       </mat-error>
       <mat-form-field class="full-width-input">
         <mat-label>{{'login.emailLabel' | translate }}</mat-label>
-        <input matInput placeholder="Email" formControlName="email" required>
+        <input matInput placeholder="{{'login.emailPlaceholder' | translate }}" formControlName="email" required>
         <mat-error>
           {{'login.emailError' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <mat-label>{{'login.passwordLabel' | translate }}</mat-label>
-        <input matInput type="password" placeholder="Password" formControlName="password" required>
+        <input matInput type="password" placeholder="{{'login.passwordPlaceholder' | translate }}" formControlName="password" required>
         <mat-error>
           {{'login.passwordError' | translate }}
         </mat-error>
@@ -23,7 +23,7 @@
     </form>
     <a href="http://localhost:3005/api/social/github" target="_blank">
       <button mat-raised-button color="light">
-        <fa-icon [icon]="faGithub"></fa-icon>
+        <fa-icon class="github-icon" [icon]="faGithub"></fa-icon>
         <span>{{'login.githubLogin' | translate }}</span>
       </button>
     </a>

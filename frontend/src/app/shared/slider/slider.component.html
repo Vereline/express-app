@@ -9,7 +9,7 @@
                         <div fxLayout="column" fxLayoutAlign="center left" class="content">
                             <h1>{{slide.title}}</h1>
                             <p>{{slide.subtitle}}</p>
-                            <button mat-raised-button color="primary">{{'sidebar.button' | translate }}</button>
+                            <button mat-raised-button [routerLink]="['/about']" color="primary">{{'sidebar.button' | translate }}</button>
                         </div>
                     </div>
                 </div>

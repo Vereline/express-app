@@ -40,7 +40,9 @@
             "title": "Доавьте вашкомментарий",
             "label": "Текст",
             "errorText": "Пожалуйста, введите текст",
-            "button": "Опубликовать"
+            "button": "Опубликовать",
+            "textPlaceholder": "Текст",
+            "typingText": " набирает текст"
         }
     },
     "posts": {
@@ -61,7 +63,8 @@
         "updatedAt": "Обновлнено ",
         "Id": "Id ",
         "createButton": "Создать",
-        "updateButton": "Обновить"
+        "updateButton": "Обновить",
+        "titlePlaceholder": "Заголовок"
     },
     "login": {
         "login": "Войти",
@@ -71,7 +74,9 @@
         "formError": "Email или пароль введен неправильно",
         "emailError": "Пожалуйста, введите валидный email",
         "passwordError": "Пожалуйста, введите валидный пароль",
-        "githubLogin": "Войти через Github"
+        "githubLogin": "Войти через Github",
+        "emailPlaceholder": "Email",
+        "passwordPlaceholder": "Пароль"
     },
     "signup":{
         "signup": "Регистрация",
@@ -89,7 +94,13 @@
         "birthDateError": "Пожалуйста, введите дату рождения",
         "passwordError": "Пожалуйста, введите валидный пароль",
         "confirmPasswordError": "Пожалуйста, введите пароль еще раз",
-        "githubLogin": "Войти через Github"
+        "githubLogin": "Войти через Github",
+        "emailPlaceholder": "Email",
+        "firstNamePlaceholder": "Имя",
+        "lastNamePlaceholder": "Фамилия",
+        "birthDatePlaceholder": "Дата рождения",
+        "passwordPlaceholder": "Пароль",
+        "passwordConfirmPlaceholder": "Подтверждение пароля"
     },
     "user": {
         "adminButton": "Перейти на Админ панель",
